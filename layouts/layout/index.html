@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		{{> head }}
+		<title>{{ title }}</title>
+		<meta name="description" content="{{ description }}">
+	</head>
+	<body>
+		<header>
+			<div class="wrap">
+				<div class="pure-g">
+					<div class="pure-u-1-1">
+						<h1 class="preheader"><a href="/">wray.pro</a></h1>
+					</div>
+					<div class="pure-u-1-1">
+						<p>
+							The polygamous relationship of music, programming and visual arts.
+						</p>
+					</div>
+				</div>
+				<div class="pure-g links">
+					<div class="pure-u-1-1">
+						<ul>
+							<li>Portfolio</li>
+							<li><a href="/blog/">Blog</a></li>
+							<li><a href="/about/">About</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section class="home">
+			<div class="wrap">
+				<div class="pure-g">
+
+					{{#each collections.porfolio as |portfolio-item idx|}}
+					{{> portfolio-item portfolio-item=portfolio-item }}
+					{{/each}}
+				</div>
+			</div>
+		</section>
+		<footer>
+			
+		</footer>
+	</body>
+</html>
