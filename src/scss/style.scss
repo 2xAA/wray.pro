@@ -468,11 +468,30 @@ section.blog {
 			font-size: 2em;
 		}
 
+		.meta {
+			font-size: 0.7em;
+			color: #b1b1b1;
+		}
+
+		.excerpt p {
+			margin: 0.5em 0;
+		}
+
 		@media screen and (min-width: 35.5em) {
 			h1 {
 				font-size: 2.5em;
 			}
 		}
+	}
+
+	article.blog-item-preview:not(:last-child) {
+		margin: 1em 0 0 0;
+		border-bottom: rgba(0,0,0,0.03) solid 1px;
+		padding: 0 0 1em 0;
+	}
+
+	article.blog-item-preview:last-child {
+		margin: 1em 0 0 0;
 	}
 
 	article.blog-item {
