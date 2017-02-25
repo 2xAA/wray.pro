@@ -1,7 +1,6 @@
 ---
 title: Blade
-date: 2012-08-20
-layout: post.html
+date: 2017-01-04
 collection: portfolio
 excerpt: BuzzJam 2015 hackday instrument built using Game Boys and Guitar Hero controllers.
 thumbnail: blade.jpg

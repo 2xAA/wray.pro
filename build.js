@@ -5,12 +5,16 @@ const metalsmithExpress	= require('metalsmith-express');
 
 const permalinks	= require('metalsmith-permalinks');
 const collections	= require('metalsmith-collections');
+const addmeta		= require('metalsmith-collections-addmeta');
 const layouts		= require('metalsmith-layouts');
 const markdown		= require('metalsmith-markdown');
 const excerpts		= require('metalsmith-excerpts');
 const partials		= require('metalsmith-discover-partials');
+const helpers		= require('metalsmith-register-helpers');
 const assets		= require('metalsmith-assets');
 const sass			= require('metalsmith-sass');
+const msSymlink		= require('metalsmith-symlink');
+const wordcount		= require('metalsmith-word-count');
 
 new Metalsmith(__dirname)
 	.metadata({
@@ -36,17 +40,31 @@ new Metalsmith(__dirname)
 		pattern: /\.hbs$/
 	}))
 
+	.use(helpers({
+		directory: './helpers/',
+	}))
+
+	.use(markdown())
+	.use(excerpts())
+	.use(wordcount())
+
 	.use(collections({
 		portfolio: {
 			pattern: '/*.md',
 			limit: 10
 		},
-		blog: 'blog/*.md'
+		blog: {
+			pattern: 'blog/*.md',
+			sortBy: 'date',
+			reverse: true
+		}
 	}))
 
-	.use(excerpts())
-
-	.use(markdown())
+	.use(addmeta({
+        portfolio: {
+            layout: 'portfolio-item.html'
+        }
+    }))
 
 	.use(permalinks({
 		relative: false
@@ -54,6 +72,13 @@ new Metalsmith(__dirname)
 
 	.use(layouts({
 		engine: 'handlebars',
+	}))
+
+	.use(msSymlink({
+		paths: [{
+			src: './static/',
+			dest: 'static/'
+		}]
 	}))
 
 	.use(metalsmithExpress({

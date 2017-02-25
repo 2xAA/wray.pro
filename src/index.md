@@ -1,4 +1,3 @@
 ---
-layout: layout.html
+layout: index-portfolio.html
 ---
-

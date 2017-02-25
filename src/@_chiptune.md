@@ -1,7 +1,6 @@
 ---
 title: "@_chiptune"
-date: 2012-08-20
-layout: post.html
+date: 2017-01-10
 collection: portfolio
 excerpt: "RT #chiptune"
 thumbnail: chiptune.jpg

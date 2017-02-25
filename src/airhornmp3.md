@@ -1,7 +1,6 @@
 ---
 title: AIRHORN.mp3
-date: 2012-08-20
-layout: post.html
+date: 2017-01-06
 collection: portfolio
 excerpt: "*bwaaaaaaaaaarrm*"
 thumbnail: airhorn.jpg

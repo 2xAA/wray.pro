@@ -1,7 +1,6 @@
 ---
 title: modV
-date: 2012-08-20
-layout: post.html
+date: 2017-01-01
 collection: portfolio
 excerpt: JavaScript based realtime music visualisation.
 thumbnail: modv.jpg

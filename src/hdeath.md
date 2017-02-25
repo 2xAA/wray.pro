@@ -1,7 +1,6 @@
 ---
 title: "#Death"
-date: 2012-08-20
-layout: post.html
+date: 2017-01-07
 collection: portfolio
 excerpt: IoT installation symbolising the worldwide concern of death.
 thumbnail: hdeath.jpg

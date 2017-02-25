@@ -1,7 +1,6 @@
 ---
 title: "How <span style='text-decoration:line-through'>Hot</span> Baked is my PI?"
-date: 2012-08-20
-layout: post.html
+date: 2017-01-11
 collection: portfolio
 excerpt: Small project reading and displaying data with a Raspberry PI.
 thumbnail: chiptune.jpg

@@ -1,7 +1,6 @@
 ---
 title: Splatmap
-date: 2012-08-20
-layout: post.html
+date: 2017-01-05
 collection: portfolio
 excerpt: Realtime 3D mapping using smartphone cameras and gamification, the winning submission from Hack The Visual in 2015.
 thumbnail: splatmap.jpg

@@ -1,7 +1,6 @@
 ---
 title: Micro Collective
-date: 2012-08-20
-layout: post.html
+date: 2017-01-09
 collection: portfolio
 excerpt: An online and offline collective for the chipmusic scene.
 thumbnail: uc.jpg

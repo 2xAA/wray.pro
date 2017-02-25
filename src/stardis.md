@@ -1,7 +1,6 @@
 ---
 title: Stardis
-date: 2012-08-20
-layout: post.html
+date: 2017-01-03
 collection: portfolio
 excerpt: BuzzJam 2016 hackday instrument. MIDI Controller/Lighting Controller/stand-alone sampler.
 thumbnail: stardis.jpg

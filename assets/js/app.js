@@ -162,7 +162,7 @@
 				if(reverse) current = videos;
 				else current = 1;
 
-				path = '/assets/video/' + id;
+				path = '/static/video/' + id + '/';
 				
 				loadCaption(current-1);
 				

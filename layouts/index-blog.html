@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		{{> head }}
+		<title>{{ sitename }}</title>
+		<meta name="description" content="{{ description }}">
+	</head>
+	<body>
+		{{> header-blog }}
+
+		<section class="blog">
+			<div class="wrap">
+				<div class="pure-g">
+					{{#each collections.blog as |blog-item idx|}}
+					{{> blog-item blog-item=blog-item }}
+					{{/each}}
+				</div>
+			</div>
+		</section>
+{{> footer }}

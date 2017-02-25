@@ -19,8 +19,12 @@
     "metalsmith-layouts": "^1.8.0",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-permalinks": "^0.5.0",
+    "metalsmith-register-helpers": "^0.2.0",
     "metalsmith-sass": "^1.4.0",
     "metalsmith-serve": "0.0.7",
-    "metalsmith-watch": "^1.0.3"
+    "metalsmith-symlink": "0.0.2",
+    "metalsmith-watch": "^1.0.3",
+    "metalsmith-word-count": "0.0.4",
+    "moment": "^2.17.1"
   }
 }

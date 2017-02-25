@@ -1,13 +1,15 @@
 ---
 title: Melodal
-date: 2012-08-20
-layout: post.html
+date: 2017-01-02
 collection: portfolio
 excerpt: Research project exploring the potential uses of online message data, in particular the message data of those we have lost.
 thumbnail: melodal.jpg
+video: true
+videoname: melodal
+widescreen: true
 ---
 
-Melodal is a research project build as my final project whilst studying Digital Art and Technology at Plymouth University. It explores the potential uses of online message data, in particular the message data of those we have lost.
+Melodal is a research project built within my final project whilst studying Digital Art and Technology at Plymouth University. It explores the potential uses of online message data, in particular the message data of those we have lost.
 
 The themes of which Melodal were built upon include my own interest in music, digital art, data after death and the ideas of projects such as AUTOICON, the last work by artist Donald Rodney, and Double Think, the research project by Ian Sergent.
 

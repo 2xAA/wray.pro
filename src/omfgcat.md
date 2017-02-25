@@ -1,7 +1,6 @@
 ---
 title: OMFG.CAT
-date: 2012-08-20
-layout: post.html
+date: 2017-01-08
 collection: portfolio
 excerpt: Just cats.
 thumbnail: omfgcat.jpg

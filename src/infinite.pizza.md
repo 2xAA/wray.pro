@@ -1,7 +1,6 @@
 ---
 title: Infinite Pizza
-date: 2012-08-20
-layout: post.html
+date: 2017-01-12
 collection: portfolio
 excerpt: Pizza forever!
 thumbnail: pizza.jpg
