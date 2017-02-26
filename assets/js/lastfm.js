@@ -11,7 +11,7 @@
 ;(function() {
 	var $ 	= document,
 		np 	= false,
-		lfm = $.querySelectorAll('footer .pure-g div:nth-child(2) aside')[0],
+		lfm = $.querySelector('aside.lfm'),
 		/* Create a cache object */
 		cache = new LastFMCache(),
 		/* Create a LastFM object */
@@ -23,41 +23,41 @@
 		lastArtist,
 		lastTrack;
 	
+	function sizeIt(loaded) {
+		var div = document.querySelector('aside.lfm div');
+		if(!div) return;
+
+		div.style.width = 'auto';
+		
+		var width = div.clientWidth;
+		if(!loaded) div.style.width = 0;
+		setTimeout(function() {
+			div.style.width = width + 'px';
+		}, 100);
+	}
+
 	function poll() {
 		/* Load some artist info. */
 		lastfm.user.getRecentTracks({user: 'theonly2xaa'}, {success: function(data) {
 			/* Check for any change */
-			if(lastArtist == data.recenttracks.track[0].artist['#text'] && lastTrack == data.recenttracks.track[0].name) return;
-			else if(lfm.childNodes[3]) {
-				lfm.removeChild(lfm.childNodes[3]);
-				lfm.removeChild(lfm.childNodes[3]);
-			}
+			if(
+				lastArtist === data.recenttracks.track[0].artist['#text'] &&
+				lastTrack === data.recenttracks.track[0].name
+			) return;
+			
+			var activeDiv = document.querySelector('aside.lfm div');
+			if(activeDiv) activeDiv.parentNode.removeChild(activeDiv);
 			
 			/* Check if now playing or not */
 			if(typeof data.recenttracks.track[0]['@attr'] !== 'undefined') {
-				if(data.recenttracks.track[0]['@attr'].nowplaying == 'true') np = true;
+				if(data.recenttracks.track[0]['@attr'].nowplaying === 'true') np = true;
 			}
 			
-			var url 	= data.recenttracks.track[0].url,
-				div	 	= $.createElement('div'),
-				img 	= $.createElement('img'),
-				imgDiv	= $.createElement('div'),
-				imgA	= $.createElement('a'),
-				a 		= $.createElement('a'),
-				width,
+			var div	 	= $.createElement('div'),
 				text 	= '',
 				textNode= $.createTextNode('');
 			
-			img.src = data.recenttracks.track[0].image[2]['#text'];
-			
-			imgA.href = a.href = url;
-			imgA.target = a.target = '_blank';
-			a.textContent = 'Now playing';
-			
-			imgA.appendChild(img);
-			
 			if(np) {
-				//div.appendChild(a);
 				text = 'Now playing: ';
 			}
 			
@@ -65,25 +65,10 @@
 			textNode.nodeValue = text;
 			
 			div.appendChild(textNode);
-			imgDiv.appendChild(imgA);
 			lfm.appendChild(div);
-			lfm.appendChild(imgDiv);
-			
-			function sizeIt(loaded) {
-				div = document.querySelectorAll('footer .pure-g div:nth-child(2) aside div')[0];
-				div.style.width = 'auto';
-				width = div.clientWidth;
-				if(!loaded) div.style.width = 0;
-				setTimeout(function() {
-					div.style.width = width + 'px';
-				}, 100);
-			}
 			
 			sizeIt(false);
-			window.addEventListener('resize', function() {
-				sizeIt(true);
-			});
-			
+
 			setTimeout(function() {
 				lastTrack = data.recenttracks.track[0].name;
 				lastArtist = data.recenttracks.track[0].artist['#text'];
@@ -94,7 +79,11 @@
 		}});
 	
 	}
+
+	window.addEventListener('resize', function() {
+		sizeIt(true);
+	});
 	
-	var interval = setInterval(poll, 1000*30);
+	setInterval(poll, 1000*30);
 	poll();	
 })();

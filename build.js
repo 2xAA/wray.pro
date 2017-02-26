@@ -15,6 +15,7 @@ const msSymlink		= require('metalsmith-symlink');
 const wordcount		= require('metalsmith-word-count');
 const drafts		= require('metalsmith-drafts');
 const feed			= require('metalsmith-feed');
+const htmlMinifier	= require('metalsmith-html-minifier');
 
 new Metalsmith(__dirname)
 	.metadata({
@@ -94,6 +95,10 @@ new Metalsmith(__dirname)
 		'liveReload': false,
 		'liveReloadPort': 35729,
 		'middleware': []
+	}))
+	
+	.use(htmlMinifier({
+		quoteCharacter: '\''
 	}))
 
 	.build(err => {
