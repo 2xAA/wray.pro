@@ -4,6 +4,8 @@ date: 2015-11-12 01:11:19
 layout: blog-item.html
 collection: blog
 excerpt: The ESP8266 is an inexpensive WiFi module which can run LUA, Assembly and other languages. This guide teaches you how to flash it.
+tags: arduino, esp8266
+comments: true
 ---
 
 <small>*Or how I learned to stop stressing and love the ESP8266*</small>

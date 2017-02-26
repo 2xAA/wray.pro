@@ -36,7 +36,7 @@
 
 		{{#if video}}
 		<script>
-			app.attachCaptionsVideo('{{{videoname}}}', true);
+			app.attachCaptionsVideo('{{{videoname}}}'{{#if newestFirst}}, {{{newestFirst}}}{{/if}});
 		</script>
 		{{/if}}
 {{> footer }}

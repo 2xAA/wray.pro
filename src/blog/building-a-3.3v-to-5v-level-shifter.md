@@ -4,6 +4,8 @@ date: 2017-01-12 00:09:09
 layout: blog-item.html
 collection: blog
 excerpt: "*Or how to sync nanoloop to the OP-1*"
+tags: CMOS, OP-1, electronics
+comments: true
 ---
 
 <small>*Or how to sync nanoloop to the OP-1*</small>

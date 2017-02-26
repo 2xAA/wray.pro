@@ -3,6 +3,8 @@ title: Archive Remix
 date: 2016-05-05 19:04:58
 layout: blog-item.html
 collection: blog
+tags: visual
+comments: true
 ---
 
 My remix of [Development of the Human Brain](http://archiveremix.com/archive/development-of-the-human-brain/).

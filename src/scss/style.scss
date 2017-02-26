@@ -30,7 +30,7 @@ blockquote {
 	border-left: 10px solid #ccc;
 	margin: 1.5em 10px;
 	padding: 0.5em 10px;
-	quotes: "\201C""\201D""\2018""\2019";
+	quotes: "\201C""\201D";
 }
 
 blockquote:before {
@@ -51,14 +51,14 @@ header .pure-g {
 }
 
 .pure-g.links {
-	padding: 10px 0;
+	padding: 0.6em 0;
 }
 
 .pure-g.links ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	font-size: 16px;
+	font-size: 1em;
 	font-family: $sserif-stack;
 }
 
@@ -425,7 +425,7 @@ section.portfolio {
 	}
 }
 
-.cv {
+section.cv {
 	
 	article {
 		box-sizing: border-box;
@@ -458,7 +458,8 @@ section.portfolio {
 	ul {
 		font-family: $serif-stack;
 	}
-	
+
+	margin: 0 0 1em 0;
 }
 
 section.blog {
@@ -514,6 +515,33 @@ section.blog {
 				font-size: 2.2em;
 			}
 		}
+	}
+
+	nav.pagination {
+		a {
+			font-family: "Open Sans Condensed", sans-serif;
+		}
+
+		i.fa {
+			color:  #1c89ff;
+			font-size: 1em;
+		}
+	}
+
+	.topics {
+		font-family: 'Playfair Display', serif;
+		margin: 0 0 1em 0;
+		font-size: 0.8em;
+		text-align: right;
+
+		.topic {
+			display: inline-block;
+			margin: 0 0.4em 0 0;
+		}
+	}
+
+	.comments {
+		margin: 0 0 1em 0;
 	}
 }
 
@@ -593,7 +621,7 @@ footer .pure-g > div:nth-child(3) {
 
 footer .pure-g {
 	border-top: rgba(0, 0, 0, 0.03) solid 1px;
-	margin: 1em 0 0 0;
+	/* margin: 1em 0 0 0; */
 }
 
 footer i {

@@ -16,6 +16,9 @@ const wordcount		= require('metalsmith-word-count');
 const drafts		= require('metalsmith-drafts');
 const feed			= require('metalsmith-feed');
 const htmlMinifier	= require('metalsmith-html-minifier');
+const paginate		= require('metalsmith-paginate');
+const tags			= require('metalsmith-tags');
+const disqus		= require('metalsmith-disqus');
 
 new Metalsmith(__dirname)
 	.metadata({
@@ -71,6 +74,31 @@ new Metalsmith(__dirname)
 		}
     }))
 
+    .use(paginate({
+		perPage: 10,
+		path: 'blog/page'
+	}))
+
+	.use(permalinks({
+		relative: false
+	}))
+
+	.use(tags({
+		handle: 'tags', // yaml key for tag list in you pages
+		path:'blog/topics/:tag.html',
+		layout: 'tag.hbt',
+		sortBy: 'date',
+		reverse: true,
+		// skip updating metalsmith's metadata object.
+		// useful for improving performance on large blogs
+		// (optional)
+		skipMetadata: false,
+		// Any options you want to pass to the [slug](https://github.com/dodo/node-slug) package.
+		// Can also supply a custom slug function.
+		// slug: function(tag) { return tag.toLowerCase() }
+		slug: {mode: 'rfc3986'}
+	}))
+
 	.use(permalinks({
 		relative: false
 	}))
@@ -82,6 +110,11 @@ new Metalsmith(__dirname)
 	
 	.use(layouts({
 		engine: 'handlebars',
+	}))
+
+	.use(disqus({
+		siteurl: 'http://wray.pro/',
+		shortname: 'wraypro'
 	}))
 
 	.use(msSymlink({

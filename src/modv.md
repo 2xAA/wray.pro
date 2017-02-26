@@ -6,6 +6,7 @@ excerpt: JavaScript based realtime music visualisation.
 thumbnail: modv.jpg
 video: true
 videoname: modv
+newestFirst: true
 ---
 
 JavaScript based realtime music visualisation.

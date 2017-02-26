@@ -3,6 +3,8 @@ title: Teensy Loader sleeping on Mac
 date: 2016-09-13 14:51:19
 layout: blog-item.html
 collection: blog
+tags: teensy, arduino, macOS
+comments: true
 ---
 
 So, I love the [Teensy](https://www.pjrc.com/teensy/index.html). It's probably the best bit of Arduino-compatible kit out there, closely followed by the ESP8266.

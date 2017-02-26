@@ -2,8 +2,11 @@
 <html lang="en">
 	<head>
 		{{> head }}
-		<title>{{ title }} - {{ sitename }}</title>
+		<title>{{ title }} - {{ site.title }}</title>
 		<meta name="description" content="{{ description }}">
+		<script type="text/javascript">
+			var disqus_developer = 1;
+		</script>
 	</head>
 	<body>
 		{{> header-blog-item }}
@@ -17,7 +20,21 @@
 					<div class="pure-u-1-1">
 						<article class="blog-item">
 							{{{ contents }}}
+
+							{{#if tags.length}}
+							<div class="topics">
+								Topics:&nbsp;
+								{{#each tags}}
+								{{> blog-item-topic topic=this.name slug=this.slug }}
+								{{/each}}
+							</div>
+							{{/if}}
 						</article>
+						{{#if comments }}
+						<div class="pure-u-1-1 comments">
+							<div id="disqus_thread"></div>
+						</div>
+						{{/if}}
 					</div>
 				</div>
 			</div>
