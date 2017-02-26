@@ -1,7 +1,5 @@
 const Metalsmith	= require('metalsmith');
 const metalsmithExpress	= require('metalsmith-express');
-//const watch			= require('metalsmith-watch');
-
 
 const permalinks	= require('metalsmith-permalinks');
 const collections	= require('metalsmith-collections');
@@ -15,12 +13,17 @@ const assets		= require('metalsmith-assets');
 const sass			= require('metalsmith-sass');
 const msSymlink		= require('metalsmith-symlink');
 const wordcount		= require('metalsmith-word-count');
+const drafts		= require('metalsmith-drafts');
+const feed			= require('metalsmith-feed');
 
 new Metalsmith(__dirname)
 	.metadata({
-		sitename: "wray.pro",
-		siteurl: "http://wray.pro/",
-		description: "The polygamous relationship of music, programming and visual arts."
+		site: {
+			title: 'wray.pro',
+			url: 'http://wray.pro/',
+			description: 'The polygamous relationship of music, programming and visual arts.',
+			author: 'Sam Wray'
+		}
 	})
 	.source('./src')
 	.destination('./build')
@@ -44,6 +47,7 @@ new Metalsmith(__dirname)
 		directory: './helpers/',
 	}))
 
+	.use(drafts())
 	.use(markdown())
 	.use(excerpts())
 	.use(wordcount())
@@ -61,15 +65,20 @@ new Metalsmith(__dirname)
 	}))
 
 	.use(addmeta({
-        portfolio: {
-            layout: 'portfolio-item.html'
-        }
+		portfolio: {
+			layout: 'portfolio-item.html'
+		}
     }))
 
 	.use(permalinks({
 		relative: false
 	}))
 
+	.use(feed({
+		collection: 'blog',
+		destination: './rss/index.xml'
+	}))
+	
 	.use(layouts({
 		engine: 'handlebars',
 	}))
@@ -82,19 +91,11 @@ new Metalsmith(__dirname)
 	}))
 
 	.use(metalsmithExpress({
-		"liveReload": false,
-		"liveReloadPort": 35729,
-		"middleware": []
+		'liveReload': false,
+		'liveReloadPort': 35729,
+		'middleware': []
 	}))
 
-	// .use(watch({
-	// 	paths: {
-	// 		"${source}/**/*": true,
-	// 		"layouts/**/*": "${source}/**/*"
-	// 	},
-	// 	livereload: true
-	// }))
-	
 	.build(err => {
 		if(err) throw err;
 	});

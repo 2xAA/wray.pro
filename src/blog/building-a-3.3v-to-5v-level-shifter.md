@@ -3,6 +3,7 @@ title: Building a 3.3V to 5V logic level shifter
 date: 2017-01-12 00:09:09
 layout: blog-item.html
 collection: blog
+excerpt: "*Or how to sync nanoloop to the OP-1*"
 ---
 
 <small>*Or how to sync nanoloop to the OP-1*</small>
