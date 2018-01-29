@@ -1,0 +1,60 @@
+{
+	"videos": 28,
+	"captions": [
+		"This was the original version of modV, about two hours into building it.<br>Modules featured: stretch, test, balls, dither, pixelate",
+	
+		"Added the glitcher module.",
+	
+		"Added waveform module and control exports.",
+	
+		"Testing modV on a black and white TV.",
+		
+		"Added tile and badHold modules. Still testing on a black and white TV.",
+		
+		"Added rotate module. Still testing on a black and white TV.<br>I learnt that patterns work best when no colour is available.",
+		
+		"Added a separate control panel and auto generation of blending controls for each loaded module.<br>Got a nice \"water\" effect with XOR and stretching.",
+		
+		"Playing around with the new separate control panel and blending modes!",
+		
+		"Back on the black and white TV, testing out having a second display with the new control panel.",
+		
+		"Added starField module and multi image support, inspired by <a target='_blank' href='http://www.alolo.co/'>Dario</a> after seeing his visuals at Analog Attack 4.",
+		
+		"Playing around with the new starField module with Super Mario sprites!",
+		
+		"Started work on a demoscene-style rotoZoom module.",
+		
+		"rotoZoom module, now with skew distortion.",
+		
+		"Better video demonstrating the rotoZoom module.",
+		
+		"Just showing off ;)",
+		
+		"More work on the rotoZoom module to make the zoom always produce enough screen repeats. The flying numbers are debug messages.",
+		
+		"Met up with <a target='_blank' href='http://www.alolo.co/'>Dario</a> at the pub and he ported a project of his to modV! Now featured as the example module, tenPrint.",
+		
+		"Started work on the interactive module building interface.",
+		
+		"More work on the interactive module building interface.",
+		
+		"Won a projector at the BBC auctions and naturally I had to test modV on it! Looks so much better projected.",
+		
+		"More projection :D",
+		
+		"The Quighty on the Winter Chips 2014 tour with me on modV visuals.",
+		
+		"J3WEL on the Winter Chips 2014 tour with me on modV visuals - J3WEL also learned how to use modV on the tour for my music set and not only did he do a great job, but he said it was easy to use and learn!",
+		
+		"Alone on the Winter Chips 2014 tour with me on modV visuals + lots of dancing!",
+		
+		"cfgk24 on the Winter Chips 2014 tour with me on modV visuals + My Lovely Horse from Father Ted ;)",
+		
+		"Messing around before releasing the Alpha version of modV.",
+		
+		"Some nice glitchy visuals of a CT scan of a human head just after I released the Alpha of modV.",
+
+		"Added THREE.js support and messing around with my 2xAA logo. Music by <a href='http://www.bleepstreet.com/?post=bleepst23-henry-homesweet-box-model'>Henry Homesweet</a>."
+	]
+}

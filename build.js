@@ -30,16 +30,16 @@ new Metalsmith(__dirname)
 		}
 	})
 	.source('./src')
-	.destination('./build')
+	.destination('./docs')
 	.clean(true)
 
 	.use(assets({
 		source: './assets', // relative to the working directory
-		destination: './assets' // relative to the build directory
+		destination: './assets' // relative to the docs directory
 	}))
 
 	.use(sass({
-		outputDir: './assets/css/' // relative to the build directory
+		outputDir: './assets/css/' // relative to the docs directory
 	}))
 
 	.use(partials({

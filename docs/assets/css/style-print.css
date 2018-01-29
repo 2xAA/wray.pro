@@ -1,0 +1,57 @@
+@media print {
+	
+	@page :left {
+		margin: 1.5cm;
+	}
+
+	@page :right {
+		margin: 1.5cm;
+	}
+
+	header div.links,
+	footer div.pure-u-1-5 a,
+	footer div.pure-u-3-5 aside {
+		display: none;
+	}
+
+	.about-image {
+		width: 35%;
+	}
+
+	.about-intro {
+		box-sizing: border-box;
+		padding: 0 0 0 20px;
+		width: 65%;
+	}
+
+	.about-intro p {
+		margin: 0.2em 0 1em 0 !important;
+	}
+
+	.about-skills-cols {
+		width: 33.33%;
+	}
+
+	h2.title {
+		page-break-before: always;
+	}
+
+	blockquote + a {
+		display: none !important;
+	}
+
+	article {
+		page-break-before: avoid;
+		page-break-after: avoid;
+	}
+
+	.pure-button {
+		display: none;
+	}
+
+	.wrap {
+		max-width: 100%;
+		padding: 0;
+	}
+
+}
