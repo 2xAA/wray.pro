@@ -21,22 +21,50 @@
 							<aside>
 							{{/if}}
 								{{#if video}}
-									{{> portfolio-item-video }}
+									<div id="ytplayer"></div>
 								{{else}}
 									<img src="/assets/thumb/{{thumbnail}}" class="pure-img">
 								{{/if}}
 							</aside>
 						</div>
-					
+
 						{{{ contents }}}
 					</div>
 				</div>
 			</div>
 		</section>
 
+
 		{{#if video}}
 		<script>
-			app.attachCaptionsVideo('{{{videoname}}}'{{#if newestFirst}}, {{{newestFirst}}}{{/if}});
+		  var tag = document.createElement('script');
+		  tag.src = 'https://www.youtube.com/player_api';
+		  var firstScriptTag = document.getElementsByTagName('script')[0];
+		  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		  var player;
+		  function onYouTubePlayerAPIReady() {
+		    player = new YT.Player('ytplayer', {
+		      height: 360,
+		      width: 640,
+		      {{#unless playlist}}
+		      videoId: '{{youtube_id}}',
+		      {{/unless}}
+		      playerVars: {
+		        {{#if playlist}}
+		        list: '{{youtube_id}}',
+		        listType: 'playlist',
+		        {{/if}}
+		        autoplay: 1,
+		        color: 'white',
+		        mute: 1,
+		        rel: 0,
+		        showinfo: 0,
+		        playsinline: 1,
+		        loop: 1,
+		      },
+		    });
+		  }
 		</script>
 		{{/if}}
 {{> footer }}

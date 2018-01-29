@@ -4,6 +4,7 @@
   "description": "wray.pro 2017",
   "main": "index.js",
   "scripts": {
+    "build": "node ./build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,6 +14,7 @@
     "metalsmith": "^2.3.0",
     "metalsmith-assets": "^0.1.0",
     "metalsmith-collections": "^0.9.0",
+    "metalsmith-collections-addmeta": "0.1.0-alpha",
     "metalsmith-discover-partials": "^0.1.0",
     "metalsmith-disqus": "^1.2.3",
     "metalsmith-drafts": "0.0.1",

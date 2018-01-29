@@ -5,8 +5,8 @@ collection: portfolio
 excerpt: JavaScript based realtime music visualisation.
 thumbnail: modv.jpg
 video: true
-videoname: modv
-newestFirst: true
+playlist: true
+youtube_id: PLn3SwdUYCMgJEKK8bnZvuRCnOwSJDOiSd
 ---
 
 JavaScript based realtime music visualisation.

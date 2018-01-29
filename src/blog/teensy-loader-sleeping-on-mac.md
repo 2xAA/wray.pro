@@ -24,7 +24,7 @@ However cool this may sound (and it is cool, nice one Apple!) this has crippled 
 5. ???
 6. PROFIT
 
-![app nap](http://wray.pro/blog/static/app-nap.png)
+![app nap](http://wray.pro/static/blog/app-nap.png)
 
 Now you can program that little bit faster and not worry about wearing out that tiny reset button on the Teensy ;^)
 

@@ -41,7 +41,7 @@ Eventually I found a solution using a MOSFET which would read any 3.3V signal an
 
 CHK DIS OUT:
 
-![Circuit diagram for the logic convertor](http://wray.pro/blog/static/logic_convertor_schem.png)
+![Circuit diagram for the logic convertor](http://wray.pro/static/blog/logic_convertor_schem.png)
 <small>I obviously can't use fritzing</small>
 
 ## Parting words

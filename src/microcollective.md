@@ -5,7 +5,8 @@ collection: portfolio
 excerpt: An online and offline collective for the chipmusic scene.
 thumbnail: uc.jpg
 video: true
-videoname: microcollective
+playlist: true
+youtube_id: PLn3SwdUYCMgLUe_F76hGr4nsObgKcAATX
 ---
 
 <p>

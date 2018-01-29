@@ -9,6 +9,18 @@ ul {
 	list-style-type: square;
 }
 
+ul ul {
+	padding: 0 0 0 0;
+	margin: 0.4em;
+	font-size: small;
+	list-style-type: none;
+}
+
+ul ul li:before {
+    content: "\2610";
+    margin-right:5px;
+}
+
 a .fa {
 	color: #000;
 }
@@ -168,6 +180,25 @@ section.portfolio.video aside {
 	position: relative;
 	font-size: 0;
 	overflow: hidden;
+
+	height: 0;
+    width: 100%;
+    padding-bottom: 100%;
+
+    iframe {
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+	&.sixteen-nine {
+		padding: 0;
+	}
 }
 
 section.portfolio.video aside div:nth-child(1) {
@@ -193,10 +224,6 @@ section.portfolio.video video {
 	opacity: 1;
 }
 
-section.portfolio.video aside.sixteen-nine video {
-	height: 100%;
-}
-
 section.portfolio.video video.hide {
 	opacity: 0;
 }
@@ -219,7 +246,7 @@ section.portfolio.video aside div#capBox.hide {
 	height: 0;
 	padding-top: 0;
 	padding-bottom: 0;
-} 
+}
 
 section.portfolio.video div#bars {
 	position: absolute;
@@ -426,12 +453,12 @@ section.portfolio {
 }
 
 section.cv {
-	
+
 	article {
 		box-sizing: border-box;
 		padding: 1em 0 0 0;
 	}
-	
+
 	article:not(:last-child)::after {
 		border-top: 1px solid rgba(0, 0, 0, 0.2);
 		content: '';
@@ -442,19 +469,19 @@ section.cv {
 	article header:not(:first-child) h2 {
 		margin: 1em 0;
 	}
-	
+
 	article header div:nth-child(2) {
 		text-align: right;
 	}
-	
+
 	article header h1 {
 		font-size: 2em;
 	}
-	
+
 	article header h2 {
 		font-size: 1.2em;
 	}
-	
+
 	ul {
 		font-family: $serif-stack;
 	}
@@ -641,7 +668,7 @@ footer .pure-g div:nth-child(1) a:hover i {
 		font-size: 1.3em;
 	}
 
-	
+
 	section.portfolio.video .pure-g > div:nth-child(3) {
 		box-sizing: border-box;
 		padding: 0 0 0 20px;
@@ -652,7 +679,7 @@ footer .pure-g div:nth-child(1) a:hover i {
 	footer .pure-g div:nth-child(2) {
 		max-height: 22px;
 	}
-	
+
 	footer .pure-g div:nth-child(2) aside div:nth-child(2) {
 		display: inline-block;
 		margin: -1px 0 0 0;
@@ -662,5 +689,5 @@ footer .pure-g div:nth-child(1) a:hover i {
 }
 
 @media screen and (min-width:64em) {
-	
+
 }
