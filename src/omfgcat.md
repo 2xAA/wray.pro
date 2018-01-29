@@ -5,7 +5,7 @@ collection: portfolio
 excerpt: Just cats.
 thumbnail: omfgcat.jpg
 video: true
-videoname: omfgcat
+youtube_id: btfHe1v0Xyk
 ---
 
 <p>

@@ -5,7 +5,7 @@ collection: portfolio
 excerpt: BuzzJam 2016 hackday instrument. MIDI Controller/Lighting Controller/stand-alone sampler.
 thumbnail: stardis.jpg
 video: true
-videoname: stardis
+youtube_id: ae7mA8pMSRI
 widescreen: true
 ---
 

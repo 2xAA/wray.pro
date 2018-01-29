@@ -1,6 +1,6 @@
 const Metalsmith	= require('metalsmith');
-const metalsmithExpress	= require('metalsmith-express');
 
+const serve			= require('metalsmith-serve');
 const permalinks	= require('metalsmith-permalinks');
 const collections	= require('metalsmith-collections');
 const addmeta		= require('metalsmith-collections-addmeta');
@@ -107,7 +107,7 @@ new Metalsmith(__dirname)
 		collection: 'blog',
 		destination: './rss/index.xml'
 	}))
-	
+
 	.use(layouts({
 		engine: 'handlebars',
 	}))
@@ -117,21 +117,23 @@ new Metalsmith(__dirname)
 		shortname: 'wraypro'
 	}))
 
-	.use(msSymlink({
-		paths: [{
-			src: './static/',
-			dest: 'static/'
-		}]
-	}))
+	// .use(msSymlink({
+	// 	paths: [{
+	// 		src: './static/',
+	// 		dest: 'static/'
+	// 	}]
+	// }))
 
-	.use(metalsmithExpress({
-		'liveReload': false,
-		'liveReloadPort': 35729,
-		'middleware': []
-	}))
-	
 	.use(htmlMinifier({
 		quoteCharacter: '\''
+	}))
+
+	.use(serve({
+		port: 3000,
+		http_error_files: { //jshint ignore:line
+			403: '/err/403',
+			404: '/err/404'
+		}
 	}))
 
 	.build(err => {

@@ -5,7 +5,7 @@ collection: portfolio
 excerpt: IoT installation symbolising the worldwide concern of death.
 thumbnail: hdeath.jpg
 video: true
-videoname: hdeath
+youtube_id: HhwfezX1Lkc
 ---
 
 <p>

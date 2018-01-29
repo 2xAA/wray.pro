@@ -5,7 +5,7 @@ collection: portfolio
 excerpt: Research project exploring the potential uses of online message data, in particular the message data of those we have lost.
 thumbnail: melodal.jpg
 video: true
-videoname: melodal
+youtube_id: ZeBIU7gwMxc
 widescreen: true
 ---
 
