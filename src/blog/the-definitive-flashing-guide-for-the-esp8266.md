@@ -33,7 +33,7 @@ So, how did I achieve this incredible feat?
 * [Python (2.7)](https://www.python.org/download/releases/2.7/)
 * [pySerial](https://github.com/pyserial/pyserial)
 * [esptool](https://github.com/themadinventor/esptool)
-* [ESP8266 v0.9.2.5 AT Firmware](/static/blog/ESP8266-v0.9.2.5-firmware.zip)
+* [ESP8266 v0.9.2.5 AT Firmware](/assets/blog/ESP8266-v0.9.2.5-firmware.zip)
 
 The following are optional extras to use the Arduino IDE to program the board:
 
@@ -53,7 +53,7 @@ We're going to make a little breakout board, this makes things 100% easier to se
 * 8 stackable male pins (or non stacking, but you'll get a more solid connection with stacking ones)
 
 #### The build
-<a href="/static/blog/breakout.jpg" target="_blank"><img src="/static/blog/breakout-small.jpg"></a>
+<a href="/assets/blog/breakout.jpg" target="_blank"><img src="/assets/blog/breakout-small.jpg"></a>
 
 Follow the image above as reference to see how this should be built.
 
@@ -65,7 +65,7 @@ Follow the image above as reference to see how this should be built.
 
 I put together a Fritzing diagram of my circuit:
 
-<a href="/static/blog/ESP8266-fritzing.png" target="_blank"><img src="/static/blog/ESP8266-fritzing.png"></a>
+<a href="/assets/blog/ESP8266-fritzing.png" target="_blank"><img src="/assets/blog/ESP8266-fritzing.png"></a>
 
 **Don't miss the wire on the Arduino going from RST to GND** - this bypasses the microcontroller on the Arduino so we can program the microcontroller on the ESP8266 instead.
 
@@ -73,7 +73,7 @@ In the diagram the ESP8266 would plug into the breakout board antenna facing dow
 
 I took a photo just incase also:
 
-<a href="/static/blog/ESP8266-circuit-photo.jpg" target="_blank"><img src="/static/blog/ESP8266-circuit-photo-small.jpg"></a>
+<a href="/assets/blog/ESP8266-circuit-photo.jpg" target="_blank"><img src="/assets/blog/ESP8266-circuit-photo-small.jpg"></a>
 
 Here's a handy table of the pins from the ESP8266:
 
@@ -122,7 +122,7 @@ Here's a handy table of the pins from the ESP8266:
 
 And here's the pinout:
 
-<a href="/static/blog/ESP8266-pinout.png" target="_blank"><img src="/static/blog/ESP8266-pinout.png"></a>
+<a href="/assets/blog/ESP8266-pinout.png" target="_blank"><img src="/assets/blog/ESP8266-pinout.png"></a>
 
 ***Please note that the RXD and TXD really should only have 3.3V voltages going into them. It is possible you may damage your ESP8266 by following the circuit above (though I, along with many others, have had no issues with this). Please read below for alternatives.***
 
@@ -136,7 +136,7 @@ And here's the pinout:
 1. Once you've downloaded esptool, unzip it.
 2. Download and unzip the firmware bin file - copy the bin file into the esp-master folder.
 3. Open a terminal and navigate to the esptool-master folder. For example:
-4. Issue this command replacing **YOUR-PORT-HERE** with the port number where you plugged in your Arduino Uno. [This can be found using the Arduino IDE](/static/blog/arduino-ide-port-screenshot.png).
+4. Issue this command replacing **YOUR-PORT-HERE** with the port number where you plugged in your Arduino Uno. [This can be found using the Arduino IDE](/assets/blog/arduino-ide-port-screenshot.png).
 
 ```
 $ ./esptool.py -p /dev/YOUR-PORT-HERE write_flash 0x0000 "v0.9.5.2 AT Firmware.bin"

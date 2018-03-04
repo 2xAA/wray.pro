@@ -12,19 +12,19 @@ comments: true
 
 ## The problem
 
-The OP-1 is an all-in-one music workstation designed and built by teenage engineering (TE), a very cool professional audio company based in Sweden (hire me TE!).  
-Although awesome, the OP-1 has always had a, in my opinion, major flaw - its connectivity. The original OP-1 firmware only had support for MIDI clock beat match and MIDI clock output over USB, leaving much to be desired for a live setup without a laptop.  
+The OP-1 is an all-in-one music workstation designed and built by teenage engineering (TE), a very cool professional audio company based in Sweden (hire me TE!).
+Although awesome, the OP-1 has always had a, in my opinion, major flaw - its connectivity. The original OP-1 firmware only had support for MIDI clock beat match and MIDI clock output over USB, leaving much to be desired for a live setup without a laptop.
 <small>(for a long time their documentation read that the OP-1 only responded to MTC, which is **NOT** MIDI Clock, I emailed them about this and this was an error in their documentation, it was not resolved)</small>
 
 TE brought out the OP-Lab to try and solve this, however after the initial purchase of the OP-1 the price of the OP-Lab is just far too expensive. I can see why it's expensive, I just don't want to pay for something that I can probably build myself, far shonkier ;P
 
-In 2016, TE released a firmware update to include external sync support for its Pocket Operator series (woo!).  
+In 2016, TE released a firmware update to include external sync support for its Pocket Operator series (woo!).
 This update allows the OP-1 to output an analog click track on the left channel of the stereo output, the audio outputs on the right channel. Not only does the update allow for Pocket Operator syncronisation, but 1/16 (Volca) sync timing is supported too which means nanoloop (2.7.6+, 1.7.2+ & mono) and LSDj (4.8.0+) syncronisation is possible!
 
 **WAIT A MINUTE.**
 
-The OP-1 outputs its click track at 3.3V. oh no.  
-We need 5V for the Game Boy to detect that click track.  
+The OP-1 outputs its click track at 3.3V. oh no.
+We need 5V for the Game Boy to detect that click track.
 
 I guess we could use a headphone amp, but that doesn't look cool (plus it's potentially unsafe).
 
@@ -41,7 +41,7 @@ Eventually I found a solution using a MOSFET which would read any 3.3V signal an
 
 CHK DIS OUT:
 
-![Circuit diagram for the logic convertor](http://wray.pro/static/blog/logic_convertor_schem.png)
+![Circuit diagram for the logic convertor](/assets/blog/logic_convertor_schem.png)
 <small>I obviously can't use fritzing</small>
 
 ## Parting words
