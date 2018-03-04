@@ -11,4 +11,4 @@ My remix of [Development of the Human Brain](http://archiveremix.com/archive/dev
 
 A 3D model taken from [Archive Remix](http://archiveremix.com/), a project by [Antonio Roberts](http://www.hellocatfood.com/).
 
-<a href="/static/blog/brain.png"><img src="/static/blog/brain.png"></a>
+<a href="/assets/blog/brain.png"><img src="/assets/blog/brain.png"></a>

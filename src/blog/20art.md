@@ -9,4 +9,4 @@ comments: true
 
 A heavily discoloured sneak preview of some artwork I’m doing for a really cool event next month. Can’t say who yet though!
 
-<img src="/static/blog/20.png">
+<img src="/assets/blog/20.png">
