@@ -1,5 +1,6 @@
 const Metalsmith	= require('metalsmith');
 
+const copy			= require('metalsmith-copy');
 const serve			= require('metalsmith-serve');
 const permalinks	= require('metalsmith-permalinks');
 const collections	= require('metalsmith-collections');
@@ -126,6 +127,11 @@ new Metalsmith(__dirname)
 
 	.use(htmlMinifier({
 		quoteCharacter: '\''
+	}))
+
+	.use(copy({
+		pattern: './docs/CNAME',
+		directory: '/',
 	}))
 
 	.use(serve({
