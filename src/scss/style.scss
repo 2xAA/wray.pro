@@ -3,6 +3,10 @@
 $sserif-stack: 'Open Sans Condensed', sans-serif;
 $serif-stack: 'Playfair Display', serif;
 
+.is-not-underlined {
+  text-decoration: none;
+}
+
 ul {
   font-family: $serif-stack;
   line-height: 1.6em;
@@ -690,4 +694,22 @@ footer .pure-g div:nth-child(1) a:hover i {
 
 @media screen and (min-width:64em) {
 
+}
+
+
+.social-links {
+  .fa-instagram:hover {
+    &:before {
+      // gradient sourced here: https://codepen.io/thomasrye/pen/VaRoYv
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+    }
+  }
+
+  a:not(:last-child) {
+    margin-right: 0.5rem;
+  }
 }
