@@ -2,7 +2,7 @@
 title: CorbynRun
 date: 2017-01-01
 collection: portfolio
-excerpt: JavaScript based realtime music visualisation.
+excerpt: Mobile game supporting Labour's campaign for the 2017 General Election in the UK.
 thumbnail: corbyn-run.jpg
 video: false
 playlist: false
