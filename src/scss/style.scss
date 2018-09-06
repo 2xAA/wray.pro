@@ -7,20 +7,29 @@ $serif-stack: 'Playfair Display', serif;
   text-decoration: none;
 }
 
-ul {
+ol, ul {
   font-family: $serif-stack;
   line-height: 1.6em;
+}
+
+ul {
   list-style-type: square;
 }
 
-ul ul {
+ul ul,
+ul ol,
+ol ul,
+ol ol {
   padding: 0 0 0 0;
   margin: 0.4em;
   font-size: small;
   list-style-type: none;
 }
 
-ul ul li:before {
+ul ul li:before,
+ul ol li:before,
+ol ul li:before,
+ol ol li:before {
     content: "\2610";
     margin-right:5px;
 }
@@ -47,16 +56,17 @@ blockquote {
   margin: 1.5em 10px;
   padding: 0.5em 10px;
   quotes: "\201C""\201D";
+  font-family: 'Playfair Display', serif;
 }
 
-blockquote:before {
-  color: #ccc;
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.10em;
-  vertical-align: -0.4em;
-}
+// blockquote:before {
+//   color: #ccc;
+//   content: open-quote;
+//   font-size: 4em;
+//   line-height: 0.1em;
+//   margin-right: 0.10em;
+//   vertical-align: -0.4em;
+// }
 
 blockquote p {
   display: inline;
@@ -170,9 +180,11 @@ section.home article h1 {
   margin-top: 0;
 }
 
-section.home article .pure-u-4-5 {
+section.home article .pure-u-sm-4-5 {
   box-sizing: border-box;
-  padding: 0 0 0 20px;
+  @media screen and (min-width: 35.5em) {
+    padding: 0 0 0 20px;
+  }
 }
 
 section.portfolio.video aside {
@@ -711,5 +723,16 @@ footer .pure-g div:nth-child(1) a:hover i {
 
   a:not(:last-child) {
     margin-right: 0.5rem;
+  }
+}
+
+img:not([src]) {
+  visibility: hidden;
+}
+
+/* Fixes Firefox anomaly during image load */
+@-moz-document url-prefix() {
+  img:-moz-loading {
+    visibility: hidden;
   }
 }

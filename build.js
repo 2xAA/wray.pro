@@ -60,7 +60,7 @@ new Metalsmith(__dirname)
 	.use(collections({
 		portfolio: {
 			pattern: '/*.md',
-			limit: 10
+			limit: 100
 		},
 		blog: {
 			pattern: 'blog/*.md',
