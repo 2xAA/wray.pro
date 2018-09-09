@@ -187,6 +187,21 @@ section.home article .pure-u-sm-4-5 {
   }
 }
 
+section.home article .pure-u-sm-1-5 {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  a {
+    position: absolute;
+    width: 100%;
+  }
+}
+
 section.portfolio.video aside {
   background-color: #000;
   color: #fff;
@@ -465,6 +480,10 @@ section.portfolio {
 
   .clearer {
     clear: both;
+  }
+
+  p:first-of-type {
+    margin-top: 0;
   }
 }
 
