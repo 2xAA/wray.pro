@@ -2,21 +2,28 @@
 title: modV
 date: 2017-01-01
 collection: portfolio
-excerpt: JavaScript based realtime music visualisation.
+excerpt: modular audio visualisation powered by JavaScript.
 thumbnail: modv.jpg
 video: true
 playlist: true
 youtube_id: PLn3SwdUYCMgJEKK8bnZvuRCnOwSJDOiSd
 ---
 
-JavaScript based realtime music visualisation.
-
 modV is an open-source music visualisation application, akin to softwares such as Resolume.
-The project is ongoing and contributions are welcome.
+Work towards modV is ongoing and contributions are welcome.
 
-modV was inspired after creating crowd controlled music visuals at YRS2014.
+The project was started after seeing the work of [Dario Villanueva](http://www.alolo.co).
 
-During the week, I created visuals for the Saturday night gig I had organised. From playing the gig in 2013 I knew a lot of people weren't going to dance, but I wanted people to still be involved, so I created the crowd controlled visuals which you could control from a smartphone whilst listening to the music and seeing, projected on stage, the affect of your actions along with the music.
+modV's origin stems from a crowd controlled music visualiser built within a week at YRS2014 for the Saturday night show I was organising. The premice was to allow people to be involved in the show, even if they weren't up for dancing.
+
+A rewrite to use Vue.JS was initiated at the end of 2017, since then modV has had many features added, such as:
+
+* Plugins
+* Contextual Menus
+* LFOs
+* [Interactive Shader Format](https://www.interactiveshaderformat.com/) support
+* MIDI assignments
+* DMX lighting control (via [Luminave](https://github.com/NERDDISCO/luminave))
 
 <a class="pure-button" href="https://github.com/2xAA/modV" target="_blank">
 	<i class="fa fa-github-alt fa-lg"></i>
