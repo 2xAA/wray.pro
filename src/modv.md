@@ -9,12 +9,10 @@ playlist: true
 youtube_id: PLn3SwdUYCMgJEKK8bnZvuRCnOwSJDOiSd
 ---
 
-modV is an open-source music visualisation application, akin to softwares such as Resolume.
+modV is an open-source music visualisation application, akin to softwares such as Resolume and VDMX.
 Work towards modV is ongoing and contributions are welcome.
 
-The project was started after seeing the work of [Dario Villanueva](http://www.alolo.co).
-
-modV's origin stems from a crowd controlled music visualiser built within a week at YRS2014 for the Saturday night show I was organising. The premice was to allow people to be involved in the show, even if they weren't up for dancing.
+The project's origins stem from a crowd controlled music visualiser built within a week at YRS2014 for the Saturday night show I was organising. The premice was to allow people to be involved in the show, even if they weren't up for dancing.
 
 A rewrite to use Vue.JS was initiated at the end of 2017, since then modV has had many features added, such as:
 

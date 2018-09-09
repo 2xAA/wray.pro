@@ -1,4 +1,8 @@
-const Metalsmith  = require('metalsmith');
+const argv = require('yargs').option('watch', {
+    default: false
+  }).argv;
+
+const Metalsmith = require('metalsmith');
 
 const nodeStatic = require('node-static');
 const watch = require('glob-watcher');
@@ -29,8 +33,23 @@ const livereload = require('metalsmith-livereload');
 
 const DIR = __dirname;
 
-const build = (clean = false) => (done) => {
-  console.log(`🛠  Building. clean: ${clean}.`);
+let clean = true;
+
+function clock(start) {
+  if (!start) return process.hrtime();
+
+  var end = process.hrtime(start);
+  return Math.round((end[0] * 1000) + (end[1] / 1000000));
+}
+
+const build = (done) => {
+  console.log(`🛠  Building...`);
+  if (clean) {
+    console.log(`🛀  Clearing build folder`);
+  }
+
+  const buildTimeStart = clock();
+
   const ms = Metalsmith(DIR)
     .clean(clean)
     .use(changed())
@@ -142,46 +161,57 @@ const build = (clean = false) => (done) => {
     .use(replace({
       '**/*.html': {
         find: "target=_blank",
-        replace: "target=blank rel=noopener",
+        replace: "target=_blank rel=noopener",
       }
     }));
 
-    // if (clean) {
+    if (clean) {
       ms.use(imagemin({
         optimizationLevel: 3,
       }))
-    // }
+    }
 
-    ms.use(livereload())
+    if (argv.watch) {
+      ms.use(livereload());
+    }
 
-    .build((err, files) => {
-      let filenames = Object.keys(files).join('\n');
-      console.log('👌  Built: ' + filenames);
-      done(err);
+    ms.build((err) => {
+      const buildTimeEnd = clock(buildTimeStart);
+      console.log('👨‍🍳  Built in', `${(buildTimeEnd)}ms`);
+      clean = false;
+      if (done) {
+        done(err);
+      }
     });
 };
 
 /**
  * Serve files.
  */
-var serve = new nodeStatic.Server(DIR + '/docs');
-require('http').createServer((req, res) => {
-  req.addListener('end', () => serve.serve(req, res));
-  req.resume();
-}).listen(8080, () => {
+if (argv.watch) {
   console.clear();
-  console.log('Serving on http://localhost:8080');
-});
+  console.log('👁  watching /src/**');
 
-/**
- * Watch files.
- */
-watch(
-  [
-    DIR + '/src/**'
-  ],
-  {
-    ignoreInitial: false
-  },
-  build(false)
-);
+  const serve = new nodeStatic.Server(DIR + '/docs');
+  require('http').createServer((req, res) => {
+    req.addListener('end', () => serve.serve(req, res));
+    req.resume();
+  }).listen(8080, () => {
+    console.log('📡  Serving on http://localhost:8080');
+  });
+
+  /**
+   * Watch files.
+   */
+  watch(
+    [
+      DIR + '/src/**'
+    ],
+    {
+      ignoreInitial: false
+    },
+    build
+  );
+} else {
+  build();
+}
