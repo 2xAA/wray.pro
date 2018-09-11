@@ -1,11 +1,12 @@
 {
+  ".DS_Store": 1506900560000,
   "@_chiptune.md": 1506900560000,
   "CNAME": 1533066087000,
-  ".DS_Store": 1506900560000,
   "airhornmp3.md": 1506900560000,
-  "betvictor-calculator.md": 1536516839000,
+  "betvictor-calculator.md": 1536699742000,
   "blade.md": 1533066087000,
   "corbyn-run.md": 1533066087000,
+  "dotjs-2016.md": 1536701582000,
   "hdeath.md": 1533066087000,
   "index.md": 1506900560000,
   "jsconfeu2018-opening.md": 1536527267000,
@@ -26,5 +27,5 @@
   "blog/the-definitive-flashing-guide-for-the-esp8266.md": 1533066087000,
   "err/403.md": 1533066087000,
   "err/404.md": 1533066087000,
-  "scss/style.scss": 1536516839000
+  "scss/style.scss": 1536700889000
 }
