@@ -154,10 +154,14 @@ const build = (done) => {
     }))
 
     .use(copy({
-      pattern: './docs/CNAME',
-      directory: '/',
+      pattern: 'google2f053618a450ec87',
+      transform: function (file) {
+        return file + '.html';
+      },
+      directory: '',
+      move: true
     }))
-
+    
     .use(replace({
       '**/*.html': {
         find: "target=_blank",
