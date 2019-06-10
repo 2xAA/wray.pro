@@ -58,7 +58,7 @@ const build = (done) => {
       site: {
         title: 'wray.pro',
         url: 'http://wray.pro/',
-        description: 'The polygamous relationship of music, programming and visual arts.',
+        description: 'The polyamorous relationship of music, programming and visual arts.',
         author: 'Sam Wray'
       }
     })
