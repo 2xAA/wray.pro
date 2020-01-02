@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "glob-watcher": "^5.0.1",
-    "handlebars": "^4.0.6",
+    "handlebars": "^4.3.0",
     "metalsmith": "^2.3.0",
     "metalsmith-assets": "^0.1.0",
     "metalsmith-changed": "^3.1.1",
