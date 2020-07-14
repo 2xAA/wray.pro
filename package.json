@@ -10,7 +10,8 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "glob-watcher": "^5.0.1",
     "handlebars": "^4.3.0",
     "metalsmith": "^2.3.0",
@@ -18,6 +19,7 @@
     "metalsmith-changed": "^3.1.1",
     "metalsmith-collections": "^0.9.0",
     "metalsmith-collections-addmeta": "0.1.0-alpha",
+    "metalsmith-copy": "^0.4.0",
     "metalsmith-discover-partials": "^0.1.0",
     "metalsmith-disqus": "^1.2.3",
     "metalsmith-drafts": "0.0.1",
@@ -32,7 +34,7 @@
     "metalsmith-paginate": "^0.3.0",
     "metalsmith-permalinks": "^0.5.0",
     "metalsmith-register-helpers": "^0.2.0",
-    "metalsmith-sass": "^1.4.0",
+    "metalsmith-sass": "^1.7.0",
     "metalsmith-serve": "0.0.7",
     "metalsmith-symlink": "0.0.2",
     "metalsmith-tags": "^2.0.0",
@@ -43,8 +45,5 @@
     "node-static": "^0.7.10",
     "open": "^6.0.0",
     "yargs": "^12.0.2"
-  },
-  "devDependencies": {
-    "metalsmith-copy": "^0.4.0"
   }
 }

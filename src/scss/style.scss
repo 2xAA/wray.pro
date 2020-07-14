@@ -484,7 +484,7 @@ section.portfolio {
     clear: both;
   }
 
-  p:first-of-type {
+  &:not(.cv) p:first-of-type {
     margin-top: 0;
   }
 }
