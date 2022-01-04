@@ -9,7 +9,7 @@
  * Peace <3
  */
 ;(function() {
-	var $ 	= document,
+	let $ 	= document,
 		np 	= false,
 		lfm = $.querySelector('aside.lfm'),
 		/* Create a cache object */
@@ -24,12 +24,12 @@
 		lastTrack;
 	
 	function sizeIt(loaded) {
-		var div = document.querySelector('aside.lfm div');
+		const div = document.querySelector('aside.lfm div');
 		if(!div) return;
 
 		div.style.width = 'auto';
 		
-		var width = div.clientWidth;
+		const width = div.clientWidth;
 		if(!loaded) div.style.width = 0;
 		setTimeout(function() {
 			div.style.width = width + 'px';
@@ -45,7 +45,7 @@
 				lastTrack === data.recenttracks.track[0].name
 			) return;
 			
-			var activeDiv = document.querySelector('aside.lfm div');
+			const activeDiv = document.querySelector('aside.lfm div');
 			if(activeDiv) activeDiv.parentNode.removeChild(activeDiv);
 			
 			/* Check if now playing or not */
@@ -53,7 +53,7 @@
 				if(data.recenttracks.track[0]['@attr'].nowplaying === 'true') np = true;
 			}
 			
-			var div	 	= $.createElement('div'),
+			let div	 	= $.createElement('div'),
 				text 	= '',
 				textNode= $.createTextNode('');
 			

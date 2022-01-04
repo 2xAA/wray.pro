@@ -11,9 +11,9 @@
  * Configurable variables. You may need to tweak these to be compatible with
  * the server-side, but the defaults work in most cases.
  */
-var hexcase = 0;  /* hex output format. 0 - lowercase; 1 - uppercase        */
-var b64pad  = ""; /* base-64 pad character. "=" for strict RFC compliance   */
-var chrsz   = 8;  /* bits per input character. 8 - ASCII; 16 - Unicode      */
+const hexcase = 0;  /* hex output format. 0 - lowercase; 1 - uppercase        */
+const b64pad  = ""; /* base-64 pad character. "=" for strict RFC compliance   */
+const chrsz   = 8;  /* bits per input character. 8 - ASCII; 16 - Unicode      */
 
 /*
  * These are the functions you'll usually want to call
@@ -44,17 +44,17 @@ function core_md5(x, len)
   x[len >> 5] |= 0x80 << ((len) % 32);
   x[(((len + 64) >>> 9) << 4) + 14] = len;
 
-  var a =  1732584193;
-  var b = -271733879;
-  var c = -1732584194;
-  var d =  271733878;
+  let a =  1732584193;
+  let b = -271733879;
+  let c = -1732584194;
+  let d =  271733878;
 
-  for(var i = 0; i < x.length; i += 16)
+  for(let i = 0; i < x.length; i += 16)
   {
-    var olda = a;
-    var oldb = b;
-    var oldc = c;
-    var oldd = d;
+    const olda = a;
+    const oldb = b;
+    const oldc = c;
+    const oldd = d;
 
     a = md5_ff(a, b, c, d, x[i+ 0], 7 , -680876936);
     d = md5_ff(d, a, b, c, x[i+ 1], 12, -389564586);
@@ -162,17 +162,17 @@ function md5_ii(a, b, c, d, x, s, t)
  */
 function core_hmac_md5(key, data)
 {
-  var bkey = str2binl(key);
+  let bkey = str2binl(key);
   if(bkey.length > 16) bkey = core_md5(bkey, key.length * chrsz);
 
-  var ipad = Array(16), opad = Array(16);
-  for(var i = 0; i < 16; i++)
+  const ipad = Array(16), opad = Array(16);
+  for(let i = 0; i < 16; i++)
   {
     ipad[i] = bkey[i] ^ 0x36363636;
     opad[i] = bkey[i] ^ 0x5C5C5C5C;
   }
 
-  var hash = core_md5(ipad.concat(str2binl(data)), 512 + data.length * chrsz);
+  const hash = core_md5(ipad.concat(str2binl(data)), 512 + data.length * chrsz);
   return core_md5(opad.concat(hash), 512 + 128);
 }
 
@@ -182,8 +182,8 @@ function core_hmac_md5(key, data)
  */
 function safe_add(x, y)
 {
-  var lsw = (x & 0xFFFF) + (y & 0xFFFF);
-  var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+  const lsw = (x & 0xFFFF) + (y & 0xFFFF);
+  const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
   return (msw << 16) | (lsw & 0xFFFF);
 }
 
@@ -201,9 +201,9 @@ function bit_rol(num, cnt)
  */
 function str2binl(str)
 {
-  var bin = Array();
-  var mask = (1 << chrsz) - 1;
-  for(var i = 0; i < str.length * chrsz; i += chrsz)
+  const bin = Array();
+  const mask = (1 << chrsz) - 1;
+  for(let i = 0; i < str.length * chrsz; i += chrsz)
     bin[i>>5] |= (str.charCodeAt(i / chrsz) & mask) << (i%32);
   return bin;
 }
@@ -213,9 +213,9 @@ function str2binl(str)
  */
 function binl2str(bin)
 {
-  var str = "";
-  var mask = (1 << chrsz) - 1;
-  for(var i = 0; i < bin.length * 32; i += chrsz)
+  let str = "";
+  const mask = (1 << chrsz) - 1;
+  for(let i = 0; i < bin.length * 32; i += chrsz)
     str += String.fromCharCode((bin[i>>5] >>> (i % 32)) & mask);
   return str;
 }
@@ -225,9 +225,9 @@ function binl2str(bin)
  */
 function binl2hex(binarray)
 {
-  var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
-  var str = "";
-  for(var i = 0; i < binarray.length * 4; i++)
+  const hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
+  let str = "";
+  for(let i = 0; i < binarray.length * 4; i++)
   {
     str += hex_tab.charAt((binarray[i>>2] >> ((i%4)*8+4)) & 0xF) +
            hex_tab.charAt((binarray[i>>2] >> ((i%4)*8  )) & 0xF);
@@ -240,14 +240,14 @@ function binl2hex(binarray)
  */
 function binl2b64(binarray)
 {
-  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-  var str = "";
-  for(var i = 0; i < binarray.length * 4; i += 3)
+  const tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  let str = "";
+  for(let i = 0; i < binarray.length * 4; i += 3)
   {
-    var triplet = (((binarray[i   >> 2] >> 8 * ( i   %4)) & 0xFF) << 16)
+    const triplet = (((binarray[i   >> 2] >> 8 * ( i   %4)) & 0xFF) << 16)
                 | (((binarray[i+1 >> 2] >> 8 * ((i+1)%4)) & 0xFF) << 8 )
                 |  ((binarray[i+2 >> 2] >> 8 * ((i+2)%4)) & 0xFF);
-    for(var j = 0; j < 4; j++)
+    for(let j = 0; j < 4; j++)
     {
       if(i * 8 + j * 6 > binarray.length * 32) str += b64pad;
       else str += tab.charAt((triplet >> 6*(3-j)) & 0x3F);
