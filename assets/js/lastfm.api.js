@@ -6,10 +6,10 @@
 
 function LastFM(options){
 	/* Set default values for required options. */
-	var apiKey    = options.apiKey    || '';
-	var apiSecret = options.apiSecret || '';
-	var apiUrl    = options.apiUrl    || 'https://ws.audioscrobbler.com/2.0/';
-	var cache     = options.cache     || undefined;
+	let apiKey    = options.apiKey    || '';
+	let apiSecret = options.apiSecret || '';
+	let apiUrl    = options.apiUrl    || 'https://ws.audioscrobbler.com/2.0/';
+	let cache     = options.cache     || undefined;
 
 	/* Set API key. */
 	this.setApiKey = function(_apiKey){
@@ -32,16 +32,16 @@ function LastFM(options){
 	};
 
 	/* Set the JSONP callback identifier counter. This is used to ensure the callbacks are unique */
-	var jsonpCounter = 0;
+	let jsonpCounter = 0;
 
 	/* Internal call (POST, GET). */
-	var internalCall = function(params, callbacks, requestMethod){
+	const internalCall = function(params, callbacks, requestMethod){
 		/* Cross-domain POST request (doesn't return any data, always successful). */
 		if(requestMethod == 'POST'){
 			/* Create iframe element to post data. */
-			var html   = document.getElementsByTagName('html')[0];
-			var iframe = document.createElement('iframe');
-			var doc;
+			const html   = document.getElementsByTagName('html')[0];
+			const iframe = document.createElement('iframe');
+			let doc;
 
 			/* Set iframe attributes. */
 			iframe.width        = 1;
@@ -93,13 +93,13 @@ function LastFM(options){
 		/* Cross-domain GET request (JSONP). */
 		else{
 			/* Get JSONP callback name. */
-			var jsonp = 'jsonp' + new Date().getTime() + jsonpCounter;
+			const jsonp = 'jsonp' + new Date().getTime() + jsonpCounter;
 
 			/* Update the unique JSONP callback counter */
 			jsonpCounter += 1;
 
 			/* Calculate cache hash. */
-			var hash = auth.getApiSignature(params);
+			const hash = auth.getApiSignature(params);
 
 			/* Check cache. */
 			if(typeof(cache) != 'undefined' && cache.contains(hash) && !cache.isExpired(hash)){
@@ -118,7 +118,7 @@ function LastFM(options){
 			window[jsonp] = function(data){
 				/* Is a cache available?. */
 				if(typeof(cache) != 'undefined'){
-					var expiration = cache.getExpirationTime(params);
+					const expiration = cache.getExpirationTime(params);
 
 					if(expiration > 0){
 						cache.store(hash, data, expiration);
@@ -156,7 +156,7 @@ function LastFM(options){
 			var script = document.createElement("script");
 
 			/* Build parameter string. */
-			var array = [];
+			const array = [];
 
 			for(var param in params){
 				array.push(encodeURIComponent(param) + "=" + encodeURIComponent(params[param]));
@@ -171,7 +171,7 @@ function LastFM(options){
 	};
 
 	/* Normal method call. */
-	var call = function(method, params, callbacks, requestMethod){
+	const call = function(method, params, callbacks, requestMethod){
 		/* Set default values. */
 		params        = params        || {};
 		callbacks     = callbacks     || {};
@@ -186,7 +186,7 @@ function LastFM(options){
 	};
 
 	/* Signed method call. */
-	var signedCall = function(method, params, session, callbacks, requestMethod){
+	const signedCall = function(method, params, session, callbacks, requestMethod){
 		/* Set default values. */
 		params        = params        || {};
 		callbacks     = callbacks     || {};
@@ -357,7 +357,7 @@ function LastFM(options){
 		/* Deprecated. Security hole was fixed. */
 		getWebSession : function(callbacks){
 			/* Save API URL and set new one (needs to be done due to a cookie!). */
-			var previuousApiUrl = apiUrl;
+			const previuousApiUrl = apiUrl;
 
 			apiUrl = 'http://ext.last.fm/2.0/';
 
@@ -665,7 +665,7 @@ function LastFM(options){
 		scrobble : function(params, session, callbacks){
 			/* Flatten an array of multiple tracks into an object with "array notation". */
 			if(params.constructor.toString().indexOf("Array") != -1){
-				var p = {};
+				const p = {};
 
 				for(i in params){
 					for(j in params[i]){
@@ -826,8 +826,8 @@ function LastFM(options){
 	/* Private auth methods. */
 	var auth = {
 		getApiSignature : function(params){
-			var keys   = [];
-			var string = '';
+			const keys   = [];
+			let string = '';
 
 			for(var key in params){
 				keys.push(key);
@@ -835,7 +835,7 @@ function LastFM(options){
 
 			keys.sort();
 
-			for(var index in keys){
+			for(const index in keys){
 				var key = keys[index];
 
 				string += key + params[key];

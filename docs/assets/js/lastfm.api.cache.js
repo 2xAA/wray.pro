@@ -11,7 +11,7 @@ Storage.prototype.setObject = function(key, value){
 
 /* Get an object from a Storage object. */
 Storage.prototype.getObject = function(key){
-	var item = this.getItem(key);
+	const item = this.getItem(key);
 
 	return JSON.parse(item);
 }
@@ -19,15 +19,15 @@ Storage.prototype.getObject = function(key){
 /* Creates a new cache object. */
 function LastFMCache(){
 	/* Expiration times. */
-	var MINUTE =          60;
-	var HOUR   = MINUTE * 60;
-	var DAY    = HOUR   * 24;
-	var WEEK   = DAY    *  7;
-	var MONTH  = WEEK   *  4.34812141;
-	var YEAR   = MONTH  * 12;
+	const MINUTE =          60;
+	const HOUR   = MINUTE * 60;
+	const DAY    = HOUR   * 24;
+	const WEEK   = DAY    *  7;
+	const MONTH  = WEEK   *  4.34812141;
+	const YEAR   = MONTH  * 12;
 
 	/* Methods with weekly expiration. */
-	var weeklyMethods = [
+	const weeklyMethods = [
 		'artist.getSimilar',
 		'tag.getSimilar',
 		'track.getSimilar',
@@ -46,7 +46,7 @@ function LastFMCache(){
 	];
 
 	/* Name for this cache. */
-	var name = 'lastfm';
+	const name = 'lastfm';
 
 	/* Create cache if it doesn't exist yet. */
 	if(localStorage.getObject(name) == null){
@@ -55,7 +55,7 @@ function LastFMCache(){
 
 	/* Get expiration time for given parameters. */
 	this.getExpirationTime = function(params){
-		var method = params.method;
+		const method = params.method;
 
 		if((/Weekly/).test(method) && !(/List/).test(method)){
 			if(typeof(params.to) != 'undefined' && typeof(params.from) != 'undefined'){
@@ -66,7 +66,7 @@ function LastFMCache(){
 			}
 		}
 
-		for(var key in this.weeklyMethods){
+		for(const key in this.weeklyMethods){
 			if(method == this.weeklyMethods[key]){
 				return WEEK;
 			}
@@ -88,7 +88,7 @@ function LastFMCache(){
 
 	/* Remove data from this cache. */
 	this.remove = function(hash){
-		var object = localStorage.getObject(name);
+		const object = localStorage.getObject(name);
 
 		object[hash] = undefined;
 
@@ -97,8 +97,8 @@ function LastFMCache(){
 
 	/* Store data in this cache with a given expiration time. */
 	this.store = function(hash, data, expiration){
-		var object = localStorage.getObject(name);
-		var time   = Math.round(new Date().getTime() / 1000);
+		const object = localStorage.getObject(name);
+		const time   = Math.round(new Date().getTime() / 1000);
 
 		object[hash] = {
 			data       : data,
@@ -110,8 +110,8 @@ function LastFMCache(){
 
 	/* Check if some specific data expired. */
 	this.isExpired = function(hash){
-		var object = localStorage.getObject(name);
-		var time   = Math.round(new Date().getTime() / 1000);
+		const object = localStorage.getObject(name);
+		const time   = Math.round(new Date().getTime() / 1000);
 
 		if(time > object[hash].expiration){
 			return true;
