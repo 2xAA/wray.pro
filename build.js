@@ -244,7 +244,7 @@ if (argv.watch) {
    * Watch files.
    */
   watch(
-    [DIR + "/src/**"],
+    [DIR + "/src/**", DIR + "/layouts/**"],
     {
       ignoreInitial: false,
     },
