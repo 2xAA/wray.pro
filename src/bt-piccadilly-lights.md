@@ -2,7 +2,7 @@
 title: "BT: Piccadilly Lights Live Coding"
 date: 2015-01-01
 collection: portfolio
-excerpt: "Inspiring the nation's kids to code: Realtime live-coding PWA over London's famous Piccadilly Circus."
+excerpt: "Inspiring the nation's kids to code: real-time live-coding PWA over London's famous Piccadilly Circus."
 thumbnail: bt-piccadilly-lights.jpg
 video: true
 youtube_id: 3YpmyMcI0kk

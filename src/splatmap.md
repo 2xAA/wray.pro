@@ -2,13 +2,13 @@
 title: Splatmap
 date: 2017-01-05
 collection: portfolio
-excerpt: Realtime 3D mapping using smartphone cameras and gamification, the winning submission from Hack The Visual in 2015.
+excerpt: Real-time 3D mapping using smartphone cameras and gamification, the winning submission from Hack The Visual in 2015.
 thumbnail: splatmap.jpg
 video: false
 ---
 
 <p>
-	Realtime 3D mapping using smartphone cameras and gamification, the winning submission from Hack The Visual in 2015 working with Dario Villanueva, Anthony Thomas, Bryan Yap and Evan Gillogley.
+	Real-time 3D mapping using smartphone cameras and gamification, the winning submission from Hack The Visual in 2015 working with Dario Villanueva, Anthony Thomas, Bryan Yap and Evan Gillogley.
 </p>
 <p>
 	The idea for this hack was to build a piece of software that would help people with their phones capture 3D images and terrain of the streets, roads and landscape around them for use in videogames, architecture, modelling and history.
