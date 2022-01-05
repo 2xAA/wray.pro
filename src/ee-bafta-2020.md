@@ -23,9 +23,9 @@ EE had held a competition to win a trip to the red carpet and wanted to involve 
 
 The AR dress itself was Alembic, so converting that to work with Unity was a little challenging. Using ARCore constrained us to only the standard renderer and Alembic, or other formats with mesh-caches only worked with URP.
 
-Eventally I ended up exporting each Alembic frame as a separate FBX and wrote a controller to load and unload each frame of the FBX to achieve the animation. Not ideal, but it worked out.
+Eventally I ended up exporting each Alembic frame as a separate FBX and wrote a controller to load and unload each FBX as a frame to achieve the animation. Not ideal, but it worked out.
 
-Once that was done, ARCore's Cloud Anchors were the next think to look into. Since we wanted the competition winners to share an experience we wanted to resolve the same space to share the transform on the dress mesh.
+Once that was done, ARCore's Cloud Anchors were the next thing to look into. Since we wanted the competition winners to share an experience we wanted to resolve the same space to share the transform on the dress mesh.
 
 This was rather easy to get going and in the office and rehersal space worked incredibly well. However, once on the red carpet and the flood-lights were turned on, all detail in the scene was lost to the phone's camera and the Cloud Anchors weren't able to resolve well enough for a shared experience.
 
