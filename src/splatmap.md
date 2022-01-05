@@ -4,7 +4,9 @@ date: 2017-01-05
 collection: portfolio
 excerpt: Real-time 3D mapping using smartphone cameras and gamification, the winning submission from Hack The Visual in 2015.
 thumbnail: splatmap.jpg
-video: false
+video: true
+youtube_id: BWECTNvJjZg
+widescreen: true
 ---
 
 <p>
@@ -16,10 +18,6 @@ video: false
 <p>
 	When playing Splatmap, the game would split connected players in a given area into two teams using geolocation and asked them to take as many photos of their surroundings as possible using an app within a minute. Whichever team’s photos generated the most valid 3D point clouds at the end of the minute would be the winners.
 </p>
-<a class="pure-button" href="https://www.youtube.com/watch?v=ZNArKCutTR8" title="'HACK THE VISUAL Overview' on YouTube" target="_blank">
-	<i class="fa fa-youtube-square fa-lg"></i>
-	Watch Imaging Mind's video
-</a>
 
 <p class="clearer">
 	To create the 3D point clouds from the photos taken certain data needed to be sent to a piece of software Anthony worked on during the hack. This included the roll, pitch and azimuth of the smartphone when the photo was taken and an accurate GPS position.<br>
