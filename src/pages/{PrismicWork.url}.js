@@ -5,6 +5,7 @@ import { Layout } from '../components/Layout'
 import { Seo } from '../components/Seo'
 import { RichText } from '../components/RichText'
 import YouTube from 'react-youtube'
+import Scroller from '../components/Scroller'
 
 const PageTemplate = ({ data }) => {
   if (!data) return null
@@ -66,10 +67,13 @@ const PageTemplate = ({ data }) => {
                     )
                   } else {
                     return (
-                      <img
-                        key={`media-${index}`}
-                        src={doc.thumbnail.url}
-                        alt={doc.thumbnail.alt}
+                      <Scroller
+                        message={doc.title.text}
+                        textColor={() =>
+                          `rgba(${getComputedStyle(
+                            document.documentElement,
+                          ).getPropertyValue('--foreground-color-rgb')}, 0.3)`
+                        }
                       />
                     )
                   }
