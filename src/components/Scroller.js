@@ -1,6 +1,10 @@
 import * as React from 'react'
 
-export default ({ message: partialMessage = '', textColor = () => '#000' }) => {
+export default ({
+  message: partialMessage = '',
+  textColor = () => '#000',
+  backgroundColor = () => 'transparent',
+}) => {
   const canvasRef = React.createRef()
 
   React.useEffect(() => {
@@ -8,6 +12,7 @@ export default ({ message: partialMessage = '', textColor = () => '#000' }) => {
     const context = canvas.getContext('2d')
     let dpr = 1
     let textSize = { width: 0 }
+    let fontSize = 72 * 2
 
     const textCanvas = document.createElement('canvas')
     const textContext = textCanvas.getContext('2d')
@@ -31,7 +36,7 @@ export default ({ message: partialMessage = '', textColor = () => '#000' }) => {
     }
 
     const setFont = () => {
-      textContext.font = `720 72px "Inter Var", sans-serif`
+      textContext.font = `720 ${fontSize}px "Inter Var", sans-serif`
       textContext.textBaseline = 'hanging'
       textContext.textAlign = 'left'
       textContext.fillStyle = textColor()
@@ -42,17 +47,28 @@ export default ({ message: partialMessage = '', textColor = () => '#000' }) => {
       textSize = textContext.measureText(`${partialMessage} `)
 
       textCanvas.width = textSize.width
-      textCanvas.height = 72 * dpr
+      textCanvas.height = fontSize
+
+      textContext.save()
+      textContext.fillStyle = backgroundColor()
+      textContext.fillRect(0, 0, textCanvas.width, textCanvas.height)
+      textContext.restore()
 
       setFont()
 
       textContext.fillText(`${partialMessage} `, 0, 0)
     }
 
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (e) => drawText())
+
     let xPos = 0
     let raf = null
+    let rowHeight = 20
+    let sinWidth = 80
 
-    function loop() {
+    function loop(timestamp = 0) {
       raf = requestAnimationFrame(loop)
       context.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -63,11 +79,25 @@ export default ({ message: partialMessage = '', textColor = () => '#000' }) => {
           context.drawImage(
             textCanvas,
             x * textCanvas.width + (y % 2 === 0 ? xPos : -xPos),
-            (textCanvas.height / dpr) * y,
+            textCanvas.height * y,
           )
         }
       }
       context.restore()
+
+      for (let i = 0; i < canvas.height; i += rowHeight) {
+        context.drawImage(
+          canvas,
+          Math.round(Math.sin(i / 100 + timestamp / 1000) * sinWidth),
+          i,
+          canvas.width,
+          rowHeight,
+          -sinWidth,
+          i,
+          canvas.width + sinWidth * 2,
+          rowHeight,
+        )
+      }
 
       if (xPos < textSize.width) {
         xPos += 0.8
@@ -77,6 +107,7 @@ export default ({ message: partialMessage = '', textColor = () => '#000' }) => {
     }
 
     document.fonts.ready.then(() => {
+      handleResize()
       raf = requestAnimationFrame(loop)
     })
 

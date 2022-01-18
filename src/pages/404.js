@@ -10,6 +10,11 @@ const NotFoundPage = () => {
       <r-cell span="8">
         <Scroller
           message={404}
+          backgroundColor={() =>
+            getComputedStyle(document.documentElement).getPropertyValue(
+              '--background-color',
+            )
+          }
           textColor={() =>
             `rgba(${getComputedStyle(document.documentElement).getPropertyValue(
               '--foreground-color-rgb',
