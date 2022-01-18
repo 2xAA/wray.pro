@@ -4,7 +4,6 @@ import { RichText } from '../components/RichText'
 import { padMonthFromDate } from '../utils/pad-month-from-date'
 
 export const TalkItems = ({ slice }) => {
-  console.log(slice)
   return (
     <r-cell span="8">
       <r-grid columns="8">
