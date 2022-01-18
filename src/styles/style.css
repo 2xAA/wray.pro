@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Playfair+Display+SC|Open+Sans+Condensed:300,300italic,700');
+
+/* $serif-stack: 'Playfair Display', serif; */
+
+:root {
+  --fontSize: 1rem;
+  /* --sansFont: 'Open Sans Condensed', sans-serif; */
+  --serifFont: 'Playfair Display', serif;
+  --titleFont: 'Playfair Display SC', serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #020202;
+    --foreground-color-rgb: 250, 250, 250;
+  }
+}
+
+a {
+  text-decoration: underline rgba(var(--foreground-color-rgb), 0.3);
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --fontSize: calc(100vw / 30);
+  }
+}
+
+@media only screen and (max-device-width: 812px) and (orientation: landscape) {
+  :root {
+    --fontSize: 1.7vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body > r-grid {
+    grid-row-gap: var(--lineHeight);
+  }
+}
+
+@media print {
+  :root {
+    --fontSize: 14px;
+  }
+
+  h2 {
+    position: relative;
+    page-break-before: always;
+    page-break-inside: avoid;
+  }
+  h3,
+  h4 {
+    position: relative;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+  p,
+  pre,
+  blockquote {
+    position: relative;
+    page-break-inside: avoid;
+  }
+}
+
+main {
+  padding: 0 5%;
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+h2 {
+  white-space: normal;
+}
+
+.video-container,
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  aspect-ratio: 16 / 9;
+  height: 100%;
+  width: 100%;
+}
+
+a.active {
+  pointer-events: none;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--yellow);
+}
+
+nav a {
+  margin-right: 0.5em;
+}
+
+.horizontal_list ul > li {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.award {
+}
+
+.job_date,
+.award_date {
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.job:not(:last-child),
+.award:not(:last-child),
+.talk:not(:last-child) {
+  border-bottom: 1px solid;
+  padding-bottom: var(--rowGap);
+}
+
+.icon {
+  margin-right: 0.5em;
+}
+
+.icon path {
+  fill: var(--foreground-color);
+}
+
+aside.lfm div {
+  display: block;
+  margin: 5px auto 0 auto;
+  /* width: 0; */
+  overflow: hidden;
+  transition: 600ms width;
+  text-align: center;
+  font-size: 12px;
+  cursor: default;
+
+  display: inline-block;
+  margin: -1px 0 0 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+footer {
+  border-top: 1px solid rgba(var(--foreground-color-rgb), 0.1);
+  padding-top: var(--rowGap);
+}
