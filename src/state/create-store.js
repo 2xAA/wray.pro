@@ -1,12 +1,6 @@
 import { createStore as reduxCreateStore } from 'redux'
 
 const reducer = (state, action) => {
-  // if (action.type === `INCREMENT`) {
-  //   return Object.assign({}, state, {
-  //     count: state.count + 1,
-  //   })
-  // }
-
   if (action.type === `UPDATE_ARTIST`) {
     return Object.assign({}, state, {
       artist: action.payload,
@@ -18,10 +12,17 @@ const reducer = (state, action) => {
       track: action.payload,
     })
   }
+
+  if (action.type === `UPDATE_NOWPLPAYING`) {
+    return Object.assign({}, state, {
+      nowPlaying: action.payload,
+    })
+  }
+
   return state
 }
 
-const initialState = { artist: '', track: '' }
+const initialState = { artist: '', track: '', nowPlaying: false }
 
 const createStore = () => reduxCreateStore(reducer, initialState)
 export default createStore
