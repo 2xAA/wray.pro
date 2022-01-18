@@ -1,6 +1,9 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import { PrismicProvider } from '@prismicio/react'
+import wrapWithProvider from './wrap-with-provider.js'
+
+export const wrapRootElement = wrapWithProvider
 
 export const wrapPageElement = ({ element, props }) => (
   <PrismicProvider

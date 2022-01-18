@@ -4,16 +4,20 @@
  *
  */
 
-/* Set an object on a Storage object. */
-Storage.prototype.setObject = function (key, value) {
-  this.setItem(key, JSON.stringify(value))
-}
+const isBrowser = typeof window !== 'undefined'
 
-/* Get an object from a Storage object. */
-Storage.prototype.getObject = function (key) {
-  const item = this.getItem(key)
+if (isBrowser) {
+  /* Set an object on a Storage object. */
+  window.Storage.prototype.setObject = function (key, value) {
+    this.setItem(key, JSON.stringify(value))
+  }
 
-  return JSON.parse(item)
+  /* Get an object from a Storage object. */
+  window.Storage.prototype.getObject = function (key) {
+    const item = this.getItem(key)
+
+    return JSON.parse(item)
+  }
 }
 
 /* Creates a new cache object. */

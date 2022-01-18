@@ -1,10 +1,7 @@
 import * as React from 'react'
-import { Helmet } from 'react-helmet'
 
 import { Header } from './Header'
 import { Footer } from './Footer'
-// import './../styles/reset.css'
-// import './../styles/common.css'
 import './../styles/raster2.css'
 import './../styles/style.css'
 

@@ -13,7 +13,7 @@ const PageTemplate = ({ data }) => {
   const youtubePlayerOptions = {
     height: 360,
     width: 640,
-    origin: window.location.origin,
+    origin: typeof window !== 'undefined' ? window.location.origin : null,
     playerVars: {
       autoplay: 1,
       color: 'white',
