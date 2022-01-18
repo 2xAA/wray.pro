@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import { Layout } from '../components/Layout'
 import { Seo } from '../components/Seo'
-import { RichText } from 'prismic-reactjs'
+import { RichText } from '../components/RichText'
 import YouTube from 'react-youtube'
 
 const PageTemplate = ({ data }) => {

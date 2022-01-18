@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { RichText } from 'prismic-reactjs'
+import { RichText } from '../components/RichText'
 import { padMonthFromDate } from '../utils/pad-month-from-date'
 
 export const AwardItems = ({ slice }) => {
