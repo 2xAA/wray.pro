@@ -69,6 +69,11 @@ const PageTemplate = ({ data }) => {
                     return (
                       <Scroller
                         message={doc.title.text}
+                        backgroundColor={() =>
+                          getComputedStyle(
+                            document.documentElement,
+                          ).getPropertyValue('--background-color')
+                        }
                         textColor={() =>
                           `rgba(${getComputedStyle(
                             document.documentElement,
