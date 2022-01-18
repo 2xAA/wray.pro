@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Playfair+Display+SC|Open+Sans+Condensed:300,300italic,700');
+/* @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Playfair+Display+SC|Open+Sans+Condensed:300,300italic,700'); */
 
 /* $serif-stack: 'Playfair Display', serif; */
 
 :root {
   --fontSize: 1rem;
   /* --sansFont: 'Open Sans Condensed', sans-serif; */
-  --serifFont: 'Playfair Display', serif;
-  --titleFont: 'Playfair Display SC', serif;
+  /* --serifFont: 'Playfair Display', serif; */
+  /* --titleFont: 'Playfair Display SC', serif; */
 }
 
 @media (prefers-color-scheme: dark) {
