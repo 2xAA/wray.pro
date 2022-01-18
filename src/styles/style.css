@@ -141,6 +141,14 @@ aside.lfm div {
   white-space: nowrap;
 }
 
+@media only screen and (max-width: 600px) {
+  aside.lfm div {
+    display: inline-block;
+    text-align: center;
+    white-space: normal;
+  }
+}
+
 footer {
   border-top: 1px solid rgba(var(--foreground-color-rgb), 0.1);
   padding-top: var(--rowGap);
