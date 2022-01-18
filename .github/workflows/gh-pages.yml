@@ -1,10 +1,13 @@
 name: Build Web
 
 on:
-  workflow_dispatch:
   push:
     branches: 
       - main
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - webhook
 
 jobs:
   build-and-deploy:
