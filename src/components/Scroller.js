@@ -2,17 +2,15 @@ import * as React from 'react'
 
 export default ({ message: partialMessage = '', textColor = () => '#000' }) => {
   const canvasRef = React.createRef()
-  let message = ''
-
-  for (let i = 0; i < 50; i += 1) {
-    message += `${partialMessage} `
-  }
 
   React.useEffect(() => {
     const canvas = canvasRef.current
     const context = canvas.getContext('2d')
     let dpr = 1
     let textSize = { width: 0 }
+
+    const textCanvas = document.createElement('canvas')
+    const textContext = textCanvas.getContext('2d')
 
     const resizeObserver = new ResizeObserver((entries) => {
       handleResize()
@@ -29,36 +27,52 @@ export default ({ message: partialMessage = '', textColor = () => '#000' }) => {
       canvas.height = canvas.parentNode.clientWidth * 0.5625
       canvas.style.width = '100%'
 
-      setFont()
-      textSize = context.measureText(`${partialMessage} `)
+      drawText()
     }
 
     const setFont = () => {
-      context.font = `720 72px "Inter Var", sans-serif`
-      context.textBaseline = 'hanging'
-      context.textAlign = 'center'
-      context.fillStyle = textColor()
+      textContext.font = `720 72px "Inter Var", sans-serif`
+      textContext.textBaseline = 'hanging'
+      textContext.textAlign = 'left'
+      textContext.fillStyle = textColor()
     }
 
-    let x = 0
+    const drawText = () => {
+      setFont()
+      textSize = textContext.measureText(`${partialMessage} `)
+
+      textCanvas.width = textSize.width
+      textCanvas.height = 72 * dpr
+
+      setFont()
+
+      textContext.fillText(`${partialMessage} `, 0, 0)
+    }
+
+    let xPos = 0
     let raf = null
 
     function loop() {
       raf = requestAnimationFrame(loop)
       context.clearRect(0, 0, canvas.width, canvas.height)
-      setFont()
 
       context.save()
       context.rotate((-25 * Math.PI) / 180)
-      for (let i = 0; i < 50; i += 1) {
-        context.fillText(message, i % 2 === 0 ? x : -x, 72 * i)
+      for (let x = -25; x < 25; x += 1) {
+        for (let y = 0; y < 50; y += 1) {
+          context.drawImage(
+            textCanvas,
+            x * textCanvas.width + (y % 2 === 0 ? xPos : -xPos),
+            (textCanvas.height / dpr) * y,
+          )
+        }
       }
       context.restore()
 
-      if (x < textSize.width) {
-        x += 0.8
+      if (xPos < textSize.width) {
+        xPos += 0.8
       } else {
-        x = 0
+        xPos = 0
       }
     }
 
