@@ -3,7 +3,6 @@ import { Link } from 'gatsby'
 import { linkResolver } from '../../link-resolver.js'
 
 export const CustomLink = (type, element, content, children, index) => {
-  console.log(element)
   if (element.data.link_type === 'Document') {
     return (
       <Link

@@ -50,6 +50,9 @@ export const query = graphql`
             document {
               ... on PrismicWork {
                 url
+                type
+                uid
+
                 data {
                   title {
                     text
