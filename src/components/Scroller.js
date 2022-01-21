@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export default ({
+const Scroller = ({
   message: partialMessage = '',
   textColor = () => '#000',
   backgroundColor = () => 'transparent',
@@ -121,3 +121,5 @@ export default ({
 
   return <canvas ref={canvasRef}></canvas>
 }
+
+export default Scroller
