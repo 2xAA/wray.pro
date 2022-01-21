@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export default ({
+const Scroller = ({
   message: partialMessage = '',
   textColor = () => '#000',
   backgroundColor = () => 'transparent',
@@ -8,6 +8,7 @@ export default ({
   const canvasRef = React.createRef()
 
   React.useEffect(() => {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
     const canvas = canvasRef.current
     const context = canvas.getContext('2d')
     let dpr = 1
@@ -85,18 +86,20 @@ export default ({
       }
       context.restore()
 
-      for (let i = 0; i < canvas.height; i += rowHeight) {
-        context.drawImage(
-          canvas,
-          Math.round(Math.sin(i / 100 + timestamp / 1000) * sinWidth),
-          i,
-          canvas.width,
-          rowHeight,
-          -sinWidth,
-          i,
-          canvas.width + sinWidth * 2,
-          rowHeight,
-        )
+      if (!isSafari) {
+        for (let i = 0; i < canvas.height; i += rowHeight) {
+          context.drawImage(
+            canvas,
+            Math.round(Math.sin(i / 100 + timestamp / 1000) * sinWidth),
+            i,
+            canvas.width,
+            rowHeight,
+            -sinWidth,
+            i,
+            canvas.width + sinWidth * 2,
+            rowHeight,
+          )
+        }
       }
 
       if (xPos < textSize.width) {
@@ -118,3 +121,5 @@ export default ({
 
   return <canvas ref={canvasRef}></canvas>
 }
+
+export default Scroller

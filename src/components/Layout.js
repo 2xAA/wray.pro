@@ -7,7 +7,12 @@ import './../styles/style.css'
 
 export const Layout = ({ isHomepage, children, navigation }) => (
   <>
-    <Helmet htmlAttributes={{ lang: 'en' }} />
+    <Helmet htmlAttributes={{ lang: 'en' }}>
+      <meta
+        name="description"
+        content="Creative technologist, musician, visualist based in London, UK."
+      />
+    </Helmet>
     <main>
       <r-grid columns="8">
         <Header isHomepage={isHomepage} navigation={navigation} />
