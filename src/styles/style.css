@@ -99,11 +99,14 @@ nav a {
   margin-right: 0.5em;
 }
 
-.award {
+.portfolio_item img,
+.about_header img {
+  aspect-ratio: 1/1;
 }
 
 .job_date,
-.award_date {
+.award_date,
+.about_header {
   align-items: flex-end;
   justify-content: center;
   display: flex;
