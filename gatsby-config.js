@@ -9,6 +9,7 @@ module.exports = {
       'The polyamorous relationship of music, programming and visual arts.',
   },
   plugins: [
+    'gatsby-plugin-remove-generator',
     {
       resolve: 'gatsby-source-prismic',
       options: {

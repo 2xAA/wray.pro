@@ -17,13 +17,14 @@ const Homepage = ({ data }) => {
   return (
     <Layout isHomepage>
       <Seo title="About" />
-      <r-cell span="3" span-s="8" class="job_date">
+      <r-cell span="3" span-s="8" class="about_header">
         <img
           src={aboutData.profile_photo.url}
           alt={aboutData.profile_photo.alt}
+          width="100%"
         />
       </r-cell>
-      <r-cell span="5" span-s="8" class="job_date">
+      <r-cell span="5" span-s="8" class="about_header">
         <RichText render={aboutData.description.richText} />
       </r-cell>
 
