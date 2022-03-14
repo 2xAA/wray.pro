@@ -16,7 +16,7 @@ const Homepage = ({ data }) => {
       {work.map(({ work_item }, index) => {
         return (
           <r-cell span="8" key={`link-${index}`}>
-            <r-grid columns="8">
+            <r-grid columns="8" class="portfolio_item">
               <r-cell span="2" span-s="3">
                 <PrismicLink field={work_item.document}>
                   <img
