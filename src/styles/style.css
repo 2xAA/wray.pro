@@ -137,9 +137,7 @@ nav a {
 aside.lfm div {
   display: block;
   margin: 5px auto 0 auto;
-  /* width: 0; */
   overflow: hidden;
-  transition: 600ms width;
   text-align: center;
   font-size: 12px;
   cursor: default;

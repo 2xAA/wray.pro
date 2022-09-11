@@ -1,17 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useMemo } from "react";
 import { connect, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import anime from "animejs";
 import { LastFM as LastFMApi } from "../lib/lastfm/lastfm.api";
 import { LastFMCache } from "../lib/lastfm/lastfm.api.cache";
 
-const TrackDisplay = ({ track, artist, nowPlaying }) =>
-  track &&
-  artist && (
-    <div>
-      {nowPlaying ? "Now playing: " : ""}
-      {track} by {artist}
-    </div>
-  );
+const pollTime = 30 * 1000;
+
+const wait = (time) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time);
+  });
+};
+
+const TrackDisplay = ({ track, artist, nowPlaying }) => (
+  <div className="last-fm-display" style={{ width: 0 }}>
+    {nowPlaying ? "Now playing: " : ""}
+    {track} by {artist}
+  </div>
+);
 
 TrackDisplay.propTypes = {
   track: PropTypes.string.isRequired,
@@ -28,9 +35,10 @@ const ConnectedTrackDisplay = connect(mapStateToProps)(TrackDisplay);
 export const LastFM = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useMemo(() => {
     let lastArtist;
     let lastTrack;
+    let lastNowPlaying;
 
     const cache = new LastFMCache();
     /* Create a LastFM object */
@@ -39,6 +47,8 @@ export const LastFM = () => {
       apiSecret: "6450f82a1a034de763684b49149f7f5f",
       cache: cache,
     });
+
+    console.log("render");
 
     function poll() {
       lastfm.user.getRecentTracks(
@@ -53,23 +63,58 @@ export const LastFM = () => {
                 nowPlaying = true;
             }
 
-            if (lastArtist === newArtist && lastTrack === newTrack) {
+            if (
+              lastArtist === newArtist &&
+              lastTrack === newTrack &&
+              lastNowPlaying === nowPlaying
+            ) {
+              setTimeout(poll, pollTime);
               return;
             }
 
             lastArtist = newArtist;
             lastTrack = newTrack;
+            lastNowPlaying = nowPlaying;
 
-            dispatch({ type: "UPDATE_ARTIST", payload: lastArtist });
-            dispatch({ type: "UPDATE_TRACK", payload: lastTrack });
-            dispatch({ type: "UPDATE_NOWPLPAYING", payload: nowPlaying });
+            anime({
+              targets: ".last-fm-display",
+              width: 0,
+              easing: "easeInOutQuad",
+              complete: async () => {
+                await wait(800);
+
+                const lfmDisplay = document.querySelector(".last-fm-display");
+                lfmDisplay.style.visibility = "hidden";
+                lfmDisplay.style.width = "auto";
+
+                await dispatch({ type: "UPDATE_ARTIST", payload: lastArtist });
+                await dispatch({ type: "UPDATE_TRACK", payload: lastTrack });
+                await dispatch({
+                  type: "UPDATE_NOWPLPAYING",
+                  payload: nowPlaying,
+                });
+
+                const { width } = lfmDisplay.getBoundingClientRect();
+                lfmDisplay.style.width = 0;
+                lfmDisplay.style.visibility = "visible";
+
+                anime({
+                  targets: ".last-fm-display",
+                  width,
+                  easing: "easeInOutQuad",
+                  complete: () => {
+                    setTimeout(poll, pollTime);
+                  },
+                });
+              },
+            });
           },
         }
       );
     }
 
     poll();
-    setInterval(poll, 30 * 1000);
+    setTimeout(poll, pollTime);
   });
 
   return <ConnectedTrackDisplay />;
