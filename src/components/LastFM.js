@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import anime from "animejs";
@@ -34,6 +34,13 @@ const ConnectedTrackDisplay = connect(mapStateToProps)(TrackDisplay);
 
 export default function LastFM() {
   const dispatch = useDispatch();
+  const [timerId, setTimerId] = useState(null);
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, []);
 
   useMemo(() => {
     let lastArtist;
@@ -66,7 +73,8 @@ export default function LastFM() {
               lastTrack === newTrack &&
               lastNowPlaying === nowPlaying
             ) {
-              setTimeout(poll, pollTime);
+              const id = setTimeout(poll, pollTime);
+              setTimerId(id);
               return;
             }
 
@@ -85,7 +93,10 @@ export default function LastFM() {
                 lfmDisplay.style.visibility = "hidden";
                 lfmDisplay.style.width = "auto";
 
-                await dispatch({ type: "UPDATE_ARTIST", payload: lastArtist });
+                await dispatch({
+                  type: "UPDATE_ARTIST",
+                  payload: lastArtist,
+                });
                 await dispatch({ type: "UPDATE_TRACK", payload: lastTrack });
                 await dispatch({
                   type: "UPDATE_NOWPLPAYING",
@@ -101,7 +112,8 @@ export default function LastFM() {
                   width,
                   easing: "easeInOutQuad",
                   complete: () => {
-                    setTimeout(poll, pollTime);
+                    const id = setTimeout(poll, pollTime);
+                    setTimerId(id);
                   },
                 });
               },
@@ -112,8 +124,9 @@ export default function LastFM() {
     }
 
     poll();
-    setTimeout(poll, pollTime);
-  });
+    const id = setTimeout(poll, pollTime);
+    setTimerId(id);
+  }, []);
 
   return <ConnectedTrackDisplay />;
 }
