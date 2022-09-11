@@ -32,7 +32,7 @@ const mapStateToProps = ({ track, artist, nowPlaying }) => {
 
 const ConnectedTrackDisplay = connect(mapStateToProps)(TrackDisplay);
 
-export const LastFM = () => {
+export default function LastFM() {
   const dispatch = useDispatch();
 
   useMemo(() => {
@@ -47,8 +47,6 @@ export const LastFM = () => {
       apiSecret: "6450f82a1a034de763684b49149f7f5f",
       cache: cache,
     });
-
-    console.log("render");
 
     function poll() {
       lastfm.user.getRecentTracks(
@@ -118,4 +116,4 @@ export const LastFM = () => {
   });
 
   return <ConnectedTrackDisplay />;
-};
+}
