@@ -1,13 +1,13 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { PrismicLink } from '@prismicio/react'
+import * as React from "react";
+import { graphql } from "gatsby";
+import { PrismicLink } from "@prismicio/react";
 
-import { Layout } from '../components/Layout'
-import { Seo } from '../components/Seo'
+import { Layout } from "../components/Layout";
+import { Seo } from "../components/Seo";
 
 const Homepage = ({ data }) => {
-  if (!data) return null
-  const { work } = data.prismicHome.data
+  if (!data) return null;
+  const { work } = data.prismicHome.data;
 
   return (
     <Layout isHomepage>
@@ -35,11 +35,11 @@ const Homepage = ({ data }) => {
               </r-cell>
             </r-grid>
           </r-cell>
-        )
+        );
       })}
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query Homepage {
@@ -75,6 +75,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default Homepage
+export default Homepage;

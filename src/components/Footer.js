@@ -1,8 +1,8 @@
-import * as React from 'react'
-import Instagram from '../../assets/instagram.svg'
-import Twitter from '../../assets/twitter.svg'
-import LastFmIcon from '../../assets/last-fm.svg'
-import { LastFM } from './LastFM.js'
+import * as React from "react";
+import Instagram from "../../assets/instagram.svg";
+import Twitter from "../../assets/twitter.svg";
+import LastFmIcon from "../../assets/last-fm.svg";
+import { LastFM } from "./LastFM.js";
 
 export const Footer = () => (
   <r-cell span="8">
@@ -17,7 +17,7 @@ export const Footer = () => (
             className="icon"
           >
             <Twitter />
-          </a>{' '}
+          </a>{" "}
           <a
             href="//instagram.com/2xAA"
             rel=" noopener noreferrer nofollow"
@@ -28,7 +28,7 @@ export const Footer = () => (
             <Instagram />
           </a>
         </r-cell>
-        <r-cell span="4" style={{ textAlign: 'center' }}>
+        <r-cell span="4" style={{ textAlign: "center" }}>
           <aside className="lfm">
             <a
               href="//last.fm/user/theonly2xAA"
@@ -42,10 +42,10 @@ export const Footer = () => (
             <LastFM />
           </aside>
         </r-cell>
-        <r-cell span="2" style={{ textAlign: 'right' }}>
+        <r-cell span="2" style={{ textAlign: "right" }}>
           / Sam Wray
         </r-cell>
       </r-grid>
     </footer>
   </r-cell>
-)
+);

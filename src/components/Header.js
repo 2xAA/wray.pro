@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { graphql, useStaticQuery, Link } from 'gatsby'
-import { PrismicLink } from '@prismicio/react'
+import * as React from "react";
+import { graphql, useStaticQuery, Link } from "gatsby";
+import { PrismicLink } from "@prismicio/react";
 
 export const Header = ({ isHomepage }) => {
   const queryData = useStaticQuery(graphql`
@@ -28,19 +28,19 @@ export const Header = ({ isHomepage }) => {
         }
       }
     }
-  `)
+  `);
 
   const { site_name, site_description, navigation } =
-    queryData.prismicHeader.data
-  const homepageClass = isHomepage ? 'homepage-header' : ''
+    queryData.prismicHeader.data;
+  const homepageClass = isHomepage ? "homepage-header" : "";
 
-  const descriptionText = isHomepage ? <p>{site_description.text}</p> : null
+  const descriptionText = isHomepage ? <p>{site_description.text}</p> : null;
 
   return (
     <>
       <r-cell className={`header ${homepageClass}`} span="1..">
         <Link to="/">
-          <h1 style={{ display: 'inline-block' }}>{site_name.text}</h1>
+          <h1 style={{ display: "inline-block" }}>{site_name.text}</h1>
         </Link>
         {descriptionText}
       </r-cell>
@@ -51,10 +51,10 @@ export const Header = ({ isHomepage }) => {
               <PrismicLink field={navItem.link} key={`link-${index}`}>
                 {navigation[index].link_text.text}
               </PrismicLink>
-            )
+            );
           })}
         </nav>
       </r-cell>
     </>
-  )
-}
+  );
+};

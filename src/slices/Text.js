@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { RichText } from '../components/RichText'
+import * as React from "react";
+import { graphql } from "gatsby";
+import { RichText } from "../components/RichText";
 
 export const Text = ({ slice }) => {
   return (
@@ -8,7 +8,7 @@ export const Text = ({ slice }) => {
       <r-grid
         columns="1"
         class={`${
-          slice.slice_label === 'horizontal_list' ? 'horizontal_list' : ''
+          slice.slice_label === "horizontal_list" ? "horizontal_list" : ""
         }`}
       >
         <r-cell>
@@ -16,8 +16,8 @@ export const Text = ({ slice }) => {
         </r-cell>
       </r-grid>
     </r-cell>
-  )
-}
+  );
+};
 
 export const query = graphql`
   fragment AboutDataBodyText on PrismicAboutDataBodyText {
@@ -27,4 +27,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

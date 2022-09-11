@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { RichText } from '../components/RichText'
+import * as React from "react";
+import { graphql } from "gatsby";
+import { RichText } from "../components/RichText";
 
 export const ThreeColumnText = ({ slice }) => {
   return (
@@ -15,8 +15,8 @@ export const ThreeColumnText = ({ slice }) => {
         <RichText render={slice.primary.text_3.richText} />
       </r-cell>
     </r-grid>
-  )
-}
+  );
+};
 
 export const query = graphql`
   fragment AboutDataBodyThreeColumnText on PrismicAboutDataBodyThreeColumnText {
@@ -32,4 +32,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

@@ -1,90 +1,90 @@
-import * as React from 'react'
+import * as React from "react";
 
 const Scroller = ({
-  message: partialMessage = '',
-  textColor = () => '#000',
-  backgroundColor = () => 'transparent',
+  message: partialMessage = "",
+  textColor = () => "#000",
+  backgroundColor = () => "transparent",
 }) => {
-  const canvasRef = React.createRef()
+  const canvasRef = React.createRef();
 
   React.useEffect(() => {
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-    const canvas = canvasRef.current
-    const context = canvas.getContext('2d')
-    let dpr = 1
-    let textSize = { width: 0 }
-    let fontSize = 72 * 2
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+    let dpr = 1;
+    let textSize = { width: 0 };
+    let fontSize = 72 * 2;
 
-    const textCanvas = document.createElement('canvas')
-    const textContext = textCanvas.getContext('2d')
+    const textCanvas = document.createElement("canvas");
+    const textContext = textCanvas.getContext("2d");
 
     const resizeObserver = new ResizeObserver((entries) => {
-      handleResize()
-    })
+      handleResize();
+    });
 
-    resizeObserver.observe(canvas.parentNode)
+    resizeObserver.observe(canvas.parentNode);
 
     const handleResize = () => {
-      dpr = window.devicePixelRatio
+      dpr = window.devicePixelRatio;
 
-      canvas.width = canvas.parentNode.clientWidth * dpr
+      canvas.width = canvas.parentNode.clientWidth * dpr;
 
       // deliberately half the height
-      canvas.height = canvas.parentNode.clientWidth * 0.5625
-      canvas.style.width = '100%'
+      canvas.height = canvas.parentNode.clientWidth * 0.5625;
+      canvas.style.width = "100%";
 
-      drawText()
-    }
+      drawText();
+    };
 
     const setFont = () => {
-      textContext.font = `720 ${fontSize}px "Inter Var", sans-serif`
-      textContext.textBaseline = 'hanging'
-      textContext.textAlign = 'left'
-      textContext.fillStyle = textColor()
-    }
+      textContext.font = `720 ${fontSize}px "Inter Var", sans-serif`;
+      textContext.textBaseline = "hanging";
+      textContext.textAlign = "left";
+      textContext.fillStyle = textColor();
+    };
 
     const drawText = () => {
-      setFont()
-      textSize = textContext.measureText(`${partialMessage} `)
+      setFont();
+      textSize = textContext.measureText(`${partialMessage} `);
 
-      textCanvas.width = textSize.width
-      textCanvas.height = fontSize
+      textCanvas.width = textSize.width;
+      textCanvas.height = fontSize;
 
-      textContext.save()
-      textContext.fillStyle = backgroundColor()
-      textContext.fillRect(0, 0, textCanvas.width, textCanvas.height)
-      textContext.restore()
+      textContext.save();
+      textContext.fillStyle = backgroundColor();
+      textContext.fillRect(0, 0, textCanvas.width, textCanvas.height);
+      textContext.restore();
 
-      setFont()
+      setFont();
 
-      textContext.fillText(`${partialMessage} `, 0, 0)
-    }
+      textContext.fillText(`${partialMessage} `, 0, 0);
+    };
 
     window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (e) => drawText())
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => drawText());
 
-    let xPos = 0
-    let raf = null
-    let rowHeight = 20
-    let sinWidth = 80
+    let xPos = 0;
+    let raf = null;
+    let rowHeight = 20;
+    let sinWidth = 80;
 
     function loop(timestamp = 0) {
-      raf = requestAnimationFrame(loop)
-      context.clearRect(0, 0, canvas.width, canvas.height)
+      raf = requestAnimationFrame(loop);
+      context.clearRect(0, 0, canvas.width, canvas.height);
 
-      context.save()
-      context.rotate((-25 * Math.PI) / 180)
+      context.save();
+      context.rotate((-25 * Math.PI) / 180);
       for (let x = -25; x < 25; x += 1) {
         for (let y = 0; y < 50; y += 1) {
           context.drawImage(
             textCanvas,
             x * textCanvas.width + (y % 2 === 0 ? xPos : -xPos),
-            textCanvas.height * y,
-          )
+            textCanvas.height * y
+          );
         }
       }
-      context.restore()
+      context.restore();
 
       if (!isSafari) {
         for (let i = 0; i < canvas.height; i += rowHeight) {
@@ -97,29 +97,29 @@ const Scroller = ({
             -sinWidth,
             i,
             canvas.width + sinWidth * 2,
-            rowHeight,
-          )
+            rowHeight
+          );
         }
       }
 
       if (xPos < textSize.width) {
-        xPos += 0.8
+        xPos += 0.8;
       } else {
-        xPos = 0
+        xPos = 0;
       }
     }
 
     document.fonts.ready.then(() => {
-      handleResize()
-      raf = requestAnimationFrame(loop)
-    })
+      handleResize();
+      raf = requestAnimationFrame(loop);
+    });
 
     return function cleanup() {
-      cancelAnimationFrame(raf)
-    }
-  })
+      cancelAnimationFrame(raf);
+    };
+  });
 
-  return <canvas ref={canvasRef}></canvas>
-}
+  return <canvas ref={canvasRef}></canvas>;
+};
 
-export default Scroller
+export default Scroller;
