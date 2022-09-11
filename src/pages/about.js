@@ -1,18 +1,18 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { RichText } from '../components/RichText'
-import { SliceZone } from '@prismicio/react'
+import * as React from "react";
+import { graphql } from "gatsby";
+import { RichText } from "../components/RichText";
+import { SliceZone } from "@prismicio/react";
 
-import { Layout } from '../components/Layout'
-import { Seo } from '../components/Seo'
-import { components } from '../slices/index.js'
+import { Layout } from "../components/Layout";
+import { Seo } from "../components/Seo";
+import { components } from "../slices/index.js";
 
 const Homepage = ({ data }) => {
   if (!data) {
-    return null
+    return null;
   }
 
-  const { data: aboutData } = data.prismicAbout
+  const { data: aboutData } = data.prismicAbout;
 
   return (
     <Layout isHomepage>
@@ -30,8 +30,8 @@ const Homepage = ({ data }) => {
 
       <SliceZone slices={data.prismicAbout.data.body} components={components} />
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query AboutQuery {
@@ -60,6 +60,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default Homepage
+export default Homepage;

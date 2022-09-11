@@ -1,8 +1,8 @@
-import { AwardItems } from './AwardItems'
-import { Text } from './Text'
-import { ThreeColumnText } from './ThreeColumnText'
-import { JobItems } from './JobItems'
-import { TalkItems } from './TalkItems'
+import { AwardItems } from "./AwardItems";
+import { Text } from "./Text";
+import { ThreeColumnText } from "./ThreeColumnText";
+import { JobItems } from "./JobItems";
+import { TalkItems } from "./TalkItems";
 
 export const components = {
   award_items: AwardItems,
@@ -10,4 +10,4 @@ export const components = {
   three_column_text: ThreeColumnText,
   job_items: JobItems,
   talk_items: TalkItems,
-}
+};

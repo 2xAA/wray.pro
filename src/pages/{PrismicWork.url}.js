@@ -1,23 +1,23 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
+import * as React from "react";
+import { graphql } from "gatsby";
 
-import { Layout } from '../components/Layout'
-import { Seo } from '../components/Seo'
-import { RichText } from '../components/RichText'
-import YouTube from 'react-youtube'
-import Scroller from '../components/Scroller'
+import { Layout } from "../components/Layout";
+import { Seo } from "../components/Seo";
+import { RichText } from "../components/RichText";
+import YouTube from "react-youtube";
+import Scroller from "../components/Scroller";
 
 const PageTemplate = ({ data }) => {
-  if (!data) return null
-  const doc = data.prismicWork.data
+  if (!data) return null;
+  const doc = data.prismicWork.data;
 
   const youtubePlayerOptions = {
     height: 360,
     width: 640,
-    origin: typeof window !== 'undefined' ? window.location.origin : null,
+    origin: typeof window !== "undefined" ? window.location.origin : null,
     playerVars: {
       autoplay: 1,
-      color: 'white',
+      color: "white",
       disablekb: 1,
       mute: 1,
       rel: 0,
@@ -25,7 +25,7 @@ const PageTemplate = ({ data }) => {
       playsinline: 1,
       loop: 1,
     },
-  }
+  };
 
   return (
     <Layout>
@@ -41,22 +41,22 @@ const PageTemplate = ({ data }) => {
               {doc.media
                 .slice(0, 1)
                 .map(({ image, youtube_id, is_playlist }, index) => {
-                  let playerOptions = { ...youtubePlayerOptions }
+                  let playerOptions = { ...youtubePlayerOptions };
 
                   if (youtube_id) {
                     if (is_playlist) {
-                      playerOptions.playerVars.list = youtube_id
-                      playerOptions.playerVars.listType = 'playlist'
+                      playerOptions.playerVars.list = youtube_id;
+                      playerOptions.playerVars.listType = "playlist";
                     }
 
                     return (
                       <div className="video-container" key={`media-${index}`}>
                         <YouTube
-                          videoId={is_playlist ? '' : youtube_id}
+                          videoId={is_playlist ? "" : youtube_id}
                           opts={playerOptions}
                         />
                       </div>
-                    )
+                    );
                   } else if (image.url) {
                     return (
                       <img
@@ -64,35 +64,35 @@ const PageTemplate = ({ data }) => {
                         src={image.url}
                         alt={image.alt}
                       />
-                    )
+                    );
                   } else {
                     return (
                       <Scroller
                         message={doc.title.text}
                         backgroundColor={() =>
                           getComputedStyle(
-                            document.documentElement,
-                          ).getPropertyValue('--background-color')
+                            document.documentElement
+                          ).getPropertyValue("--background-color")
                         }
                         textColor={() =>
                           `rgba(${getComputedStyle(
-                            document.documentElement,
-                          ).getPropertyValue('--foreground-color-rgb')}, 0.3)`
+                            document.documentElement
+                          ).getPropertyValue("--foreground-color-rgb")}, 0.3)`
                         }
                       />
-                    )
+                    );
                   }
                 })}
             </r-cell>
             <r-cell span="8">
               <RichText render={doc.body.richText} />
-            </r-cell>{' '}
+            </r-cell>{" "}
           </r-grid>
         </article>
       </r-cell>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query PageQuery($id: String) {
@@ -128,6 +128,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default PageTemplate
+export default PageTemplate;

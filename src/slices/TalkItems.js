@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { RichText } from '../components/RichText'
-import { padMonthFromDate } from '../utils/pad-month-from-date'
+import * as React from "react";
+import { graphql } from "gatsby";
+import { RichText } from "../components/RichText";
+import { padMonthFromDate } from "../utils/pad-month-from-date";
 
 export const TalkItems = ({ slice }) => {
   return (
@@ -23,10 +23,10 @@ export const TalkItems = ({ slice }) => {
                     data: { date: date_b },
                   },
                 },
-              },
+              }
             ) => {
-              return new Date(date_b) - new Date(date_a)
-            },
+              return new Date(date_b) - new Date(date_a);
+            }
           )
           .map(
             (
@@ -37,7 +37,7 @@ export const TalkItems = ({ slice }) => {
                   },
                 },
               },
-              talkIndex,
+              talkIndex
             ) => {
               return (
                 <r-cell span="8" key={`talk-${talkIndex}`} class="talk">
@@ -47,7 +47,7 @@ export const TalkItems = ({ slice }) => {
                     </r-cell>
                     <r-cell span="1" span-s="2" class="award_date">
                       {`${padMonthFromDate(date)}/${new Date(
-                        date,
+                        date
                       ).getFullYear()}`}
                     </r-cell>
                     <r-cell span="8">
@@ -55,13 +55,13 @@ export const TalkItems = ({ slice }) => {
                     </r-cell>
                   </r-grid>
                 </r-cell>
-              )
-            },
+              );
+            }
           )}
       </r-grid>
     </r-cell>
-  )
-}
+  );
+};
 
 export const query = graphql`
   fragment AboutDataBodyTalkItems on PrismicAboutDataBodyTalkItems {
@@ -84,4 +84,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

@@ -4,132 +4,132 @@
  *
  */
 
-const isBrowser = typeof window !== 'undefined'
+const isBrowser = typeof window !== "undefined";
 
 if (isBrowser) {
   /* Set an object on a Storage object. */
   window.Storage.prototype.setObject = function (key, value) {
-    this.setItem(key, JSON.stringify(value))
-  }
+    this.setItem(key, JSON.stringify(value));
+  };
 
   /* Get an object from a Storage object. */
   window.Storage.prototype.getObject = function (key) {
-    const item = this.getItem(key)
+    const item = this.getItem(key);
 
-    return JSON.parse(item)
-  }
+    return JSON.parse(item);
+  };
 }
 
 /* Creates a new cache object. */
 export function LastFMCache() {
   /* Expiration times. */
-  const MINUTE = 60
-  const HOUR = MINUTE * 60
-  const DAY = HOUR * 24
-  const WEEK = DAY * 7
-  const MONTH = WEEK * 4.34812141
-  const YEAR = MONTH * 12
+  const MINUTE = 60;
+  const HOUR = MINUTE * 60;
+  const DAY = HOUR * 24;
+  const WEEK = DAY * 7;
+  const MONTH = WEEK * 4.34812141;
+  const YEAR = MONTH * 12;
 
   /* Methods with weekly expiration. */
   const weeklyMethods = [
-    'artist.getSimilar',
-    'tag.getSimilar',
-    'track.getSimilar',
-    'artist.getTopAlbums',
-    'artist.getTopTracks',
-    'geo.getTopArtists',
-    'geo.getTopTracks',
-    'tag.getTopAlbums',
-    'tag.getTopArtists',
-    'tag.getTopTags',
-    'tag.getTopTracks',
-    'user.getTopAlbums',
-    'user.getTopArtists',
-    'user.getTopTags',
-    'user.getTopTracks',
-  ]
+    "artist.getSimilar",
+    "tag.getSimilar",
+    "track.getSimilar",
+    "artist.getTopAlbums",
+    "artist.getTopTracks",
+    "geo.getTopArtists",
+    "geo.getTopTracks",
+    "tag.getTopAlbums",
+    "tag.getTopArtists",
+    "tag.getTopTags",
+    "tag.getTopTracks",
+    "user.getTopAlbums",
+    "user.getTopArtists",
+    "user.getTopTags",
+    "user.getTopTracks",
+  ];
 
   /* Name for this cache. */
-  const name = 'lastfm'
+  const name = "lastfm";
 
   /* Create cache if it doesn't exist yet. */
   if (localStorage.getObject(name) == null) {
-    localStorage.setObject(name, [])
+    localStorage.setObject(name, []);
   }
 
   /* Get expiration time for given parameters. */
   this.getExpirationTime = function (params) {
-    const method = params.method
+    const method = params.method;
 
     if (/Weekly/.test(method) && !/List/.test(method)) {
       if (
-        typeof params.to != 'undefined' &&
-        typeof params.from != 'undefined'
+        typeof params.to != "undefined" &&
+        typeof params.from != "undefined"
       ) {
-        return YEAR
+        return YEAR;
       } else {
-        return WEEK
+        return WEEK;
       }
     }
 
     for (const key in this.weeklyMethods) {
       if (method == this.weeklyMethods[key]) {
-        return WEEK
+        return WEEK;
       }
     }
 
-    return -1
-  }
+    return -1;
+  };
 
   /* Check if this cache contains specific data. */
   this.contains = function (hash) {
     return (
-      typeof localStorage.getObject(name)[hash] != 'undefined' &&
-      typeof localStorage.getObject(name)[hash].data != 'undefined'
-    )
-  }
+      typeof localStorage.getObject(name)[hash] != "undefined" &&
+      typeof localStorage.getObject(name)[hash].data != "undefined"
+    );
+  };
 
   /* Load data from this cache. */
   this.load = function (hash) {
-    return localStorage.getObject(name)[hash].data
-  }
+    return localStorage.getObject(name)[hash].data;
+  };
 
   /* Remove data from this cache. */
   this.remove = function (hash) {
-    const object = localStorage.getObject(name)
+    const object = localStorage.getObject(name);
 
-    object[hash] = undefined
+    object[hash] = undefined;
 
-    localStorage.setObject(name, object)
-  }
+    localStorage.setObject(name, object);
+  };
 
   /* Store data in this cache with a given expiration time. */
   this.store = function (hash, data, expiration) {
-    const object = localStorage.getObject(name)
-    const time = Math.round(new Date().getTime() / 1000)
+    const object = localStorage.getObject(name);
+    const time = Math.round(new Date().getTime() / 1000);
 
     object[hash] = {
       data: data,
       expiration: time + expiration,
-    }
+    };
 
-    localStorage.setObject(name, object)
-  }
+    localStorage.setObject(name, object);
+  };
 
   /* Check if some specific data expired. */
   this.isExpired = function (hash) {
-    const object = localStorage.getObject(name)
-    const time = Math.round(new Date().getTime() / 1000)
+    const object = localStorage.getObject(name);
+    const time = Math.round(new Date().getTime() / 1000);
 
     if (time > object[hash].expiration) {
-      return true
+      return true;
     }
 
-    return false
-  }
+    return false;
+  };
 
   /* Clear this cache. */
   this.clear = function () {
-    localStorage.setObject(name, [])
-  }
+    localStorage.setObject(name, []);
+  };
 }

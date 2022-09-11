@@ -1,35 +1,35 @@
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
-    title: 'wray.pro',
+    title: "wray.pro",
     description:
-      'The polyamorous relationship of music, programming and visual arts.',
+      "The polyamorous relationship of music, programming and visual arts.",
   },
   plugins: [
-    'gatsby-plugin-remove-generator',
+    "gatsby-plugin-remove-generator",
     {
-      resolve: 'gatsby-source-prismic',
+      resolve: "gatsby-source-prismic",
       options: {
         repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
-        linkResolver: require('./link-resolver.js').linkResolver,
+        linkResolver: require("./link-resolver.js").linkResolver,
         customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
       },
     },
-    'gatsby-plugin-image',
-    'gatsby-plugin-react-helmet',
+    "gatsby-plugin-image",
+    "gatsby-plugin-react-helmet",
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: "gatsby-plugin-manifest",
       options: {
-        icon: 'src/images/favicon.png',
+        icon: "src/images/favicon.png",
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'images',
+        name: "images",
         path: `${__dirname}/src/images`,
       },
     },
@@ -40,7 +40,7 @@ module.exports = {
     //   },
     // },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
           include: /assets/,
@@ -48,4 +48,4 @@ module.exports = {
       },
     },
   ],
-}
+};

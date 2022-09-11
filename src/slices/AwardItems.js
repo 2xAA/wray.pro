@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { RichText } from '../components/RichText'
-import { padMonthFromDate } from '../utils/pad-month-from-date'
+import * as React from "react";
+import { graphql } from "gatsby";
+import { RichText } from "../components/RichText";
+import { padMonthFromDate } from "../utils/pad-month-from-date";
 
 export const AwardItems = ({ slice }) => {
   return (
@@ -23,10 +23,10 @@ export const AwardItems = ({ slice }) => {
                     data: { date: date_b },
                   },
                 },
-              },
+              }
             ) => {
-              return new Date(date_b) - new Date(date_a)
-            },
+              return new Date(date_b) - new Date(date_a);
+            }
           )
           .map(
             (
@@ -37,11 +37,11 @@ export const AwardItems = ({ slice }) => {
                   },
                 },
               },
-              awardIndex,
+              awardIndex
             ) => {
               const subtitleHeading = subtitle.text ? (
                 <h3>{subtitle.text}</h3>
-              ) : undefined
+              ) : undefined;
 
               return (
                 <r-cell span="8" key={`award-${awardIndex}`} class="award">
@@ -51,7 +51,7 @@ export const AwardItems = ({ slice }) => {
                     </r-cell>
                     <r-cell span="1" span-s="2" class="award_date">
                       {`${padMonthFromDate(date)}/${new Date(
-                        date,
+                        date
                       ).getFullYear()}`}
                     </r-cell>
                     <r-cell span="8">
@@ -60,13 +60,13 @@ export const AwardItems = ({ slice }) => {
                     </r-cell>
                   </r-grid>
                 </r-cell>
-              )
-            },
+              );
+            }
           )}
       </r-grid>
     </r-cell>
-  )
-}
+  );
+};
 
 export const query = graphql`
   fragment AboutDataBodyAwardItems on PrismicAboutDataBodyAwardItems {
@@ -92,4 +92,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
