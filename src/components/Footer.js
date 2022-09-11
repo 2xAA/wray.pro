@@ -1,8 +1,12 @@
 import * as React from "react";
+import Loadable from "@loadable/component";
 import Instagram from "../../assets/instagram.svg";
 import Twitter from "../../assets/twitter.svg";
 import LastFmIcon from "../../assets/last-fm.svg";
-import { LastFM } from "./LastFM.js";
+
+const LastFM = Loadable(() =>
+  import(/* webpackPrefetch: true */ "./LastFM.js")
+);
 
 export const Footer = () => (
   <r-cell span="8">
