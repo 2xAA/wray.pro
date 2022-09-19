@@ -126,6 +126,10 @@ nav a {
   padding-bottom: var(--rowGap);
 }
 
+.job .related_work img {
+  border-radius: 6px;
+}
+
 .icon {
   margin-right: 0.5em;
 }
