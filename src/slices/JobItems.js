@@ -2,7 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { RichText } from "../components/RichText";
 import { padMonthFromDate } from "../utils/pad-month-from-date";
-import { PrismicLink, PrismicImage } from "@prismicio/react";
+import { PrismicLink } from "@prismicio/react";
 
 export const JobItems = ({ slice }) => {
   const renderRelatedWork = (job) => {
@@ -16,26 +16,27 @@ export const JobItems = ({ slice }) => {
       <r-cell span="8">
         <h4>Related Work</h4>
         <r-grid columns="6" class="related_work">
-          {related_work.map(
-            ({
-              work,
-              work: {
-                document: {
-                  url,
-                  data: {
-                    title: { text: titleText },
-                    thumbnail,
+          {related_work
+            .filter((related) => related?.work?.document)
+            .map(
+              ({
+                work,
+                work: {
+                  document: {
+                    data: {
+                      title: { text: titleText },
+                      thumbnail: { alt: thumbnailAlt, url: thumbnailUrl },
+                    },
                   },
                 },
-              },
-            }) => (
-              <r-cell span="1" span-s="2">
-                <PrismicLink document={work.document} title={titleText}>
-                  <PrismicImage field={thumbnail} width="100%" loading="lazy" />
-                </PrismicLink>
-              </r-cell>
-            )
-          )}
+              }) => (
+                <r-cell span="1" span-s="2" key={work.id}>
+                  <PrismicLink document={work.document} title={titleText}>
+                    <img src={thumbnailUrl} alt={thumbnailAlt} width="100%" />
+                  </PrismicLink>
+                </r-cell>
+              )
+            )}
         </r-grid>
       </r-cell>
     );
@@ -126,7 +127,6 @@ export const query = graphql`
       job {
         document {
           ... on PrismicJob {
-            id
             data {
               title {
                 text
@@ -144,6 +144,7 @@ export const query = graphql`
               }
               related_work {
                 work {
+                  id
                   document {
                     ... on PrismicWork {
                       url
