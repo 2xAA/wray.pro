@@ -35,12 +35,7 @@ const ConnectedTrackDisplay = connect(mapStateToProps)(TrackDisplay);
 export default function LastFM() {
   const dispatch = useDispatch();
   const [timerId, setTimerId] = useState(null);
-
-  useEffect(() => {
-    return () => {
-      clearTimeout(timerId);
-    };
-  }, []);
+  const [animationInstance, setAnimationInstance] = useState(null);
 
   useMemo(() => {
     let lastArtist;
@@ -82,42 +77,44 @@ export default function LastFM() {
             lastTrack = newTrack;
             lastNowPlaying = nowPlaying;
 
-            anime({
-              targets: ".last-fm-display",
-              width: 0,
-              easing: "easeInOutQuad",
-              complete: async () => {
-                await wait(800);
+            setAnimationInstance(
+              anime({
+                targets: ".last-fm-display",
+                width: 0,
+                easing: "easeInOutQuad",
+                complete: async () => {
+                  await wait(800);
 
-                const lfmDisplay = document.querySelector(".last-fm-display");
-                lfmDisplay.style.visibility = "hidden";
-                lfmDisplay.style.width = "auto";
+                  const lfmDisplay = document.querySelector(".last-fm-display");
+                  lfmDisplay.style.visibility = "hidden";
+                  lfmDisplay.style.width = "auto";
 
-                await dispatch({
-                  type: "UPDATE_ARTIST",
-                  payload: lastArtist,
-                });
-                await dispatch({ type: "UPDATE_TRACK", payload: lastTrack });
-                await dispatch({
-                  type: "UPDATE_NOWPLPAYING",
-                  payload: nowPlaying,
-                });
+                  await dispatch({
+                    type: "UPDATE_ARTIST",
+                    payload: lastArtist,
+                  });
+                  await dispatch({ type: "UPDATE_TRACK", payload: lastTrack });
+                  await dispatch({
+                    type: "UPDATE_NOWPLPAYING",
+                    payload: nowPlaying,
+                  });
 
-                const { width } = lfmDisplay.getBoundingClientRect();
-                lfmDisplay.style.width = 0;
-                lfmDisplay.style.visibility = "visible";
+                  const { width } = lfmDisplay.getBoundingClientRect();
+                  lfmDisplay.style.width = 0;
+                  lfmDisplay.style.visibility = "visible";
 
-                anime({
-                  targets: ".last-fm-display",
-                  width,
-                  easing: "easeInOutQuad",
-                  complete: () => {
-                    const id = setTimeout(poll, pollTime);
-                    setTimerId(id);
-                  },
-                });
-              },
-            });
+                  anime({
+                    targets: ".last-fm-display",
+                    width,
+                    easing: "easeInOutQuad",
+                    complete: () => {
+                      const id = setTimeout(poll, pollTime);
+                      setTimerId(id);
+                    },
+                  });
+                },
+              })
+            );
           },
         }
       );
@@ -126,6 +123,11 @@ export default function LastFM() {
     poll();
     const id = setTimeout(poll, pollTime);
     setTimerId(id);
+
+    return () => {
+      animationInstance.pause();
+      clearTimeout(timerId);
+    };
   }, []);
 
   return <ConnectedTrackDisplay />;
