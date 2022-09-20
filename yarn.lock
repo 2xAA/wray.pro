@@ -1417,7 +1417,7 @@
   resolved "https://registry.yarnpkg.com/@prismicio/custom-types-client/-/custom-types-client-0.0.6.tgz#774e1498b88a07b817292a5894208851c5dd4635"
   integrity sha512-/QeHmNzEtOMtEAZF7ZfRSSosSXGhA4dzQm7vczhxdBGIT23Bbj+h0I4hNlpJZ4n0UzmIYWtd45jYCguVo3hfqQ==
 
-"@prismicio/helpers@^2.0.0", "@prismicio/helpers@^2.0.0-beta.0", "@prismicio/helpers@^2.0.0-beta.6":
+"@prismicio/helpers@^2.0.0", "@prismicio/helpers@^2.0.0-beta.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.0.0.tgz#ac975a7930d798835addd44cccb4598e26f53a50"
   integrity sha512-8xnK2pj+us935wAvJvPdk4o6Zhn/z99aUWwaGYJBbNqQy8x0pahgXY1L3l6s6+9xcEdJy6kKL8IfvFS6U0tpXg==
@@ -1426,25 +1426,47 @@
     "@prismicio/types" "^0.1.20"
     escape-html "^1.0.3"
 
-"@prismicio/react@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@prismicio/react/-/react-2.0.2.tgz#32147c985545c2e78154586d682bf2c41ddf33d8"
-  integrity sha512-zolkTwR3dkI8vZC1ABLW6L6NdZUs7MQMIBv2IHOT4l4Wf+Rux2THiHLmyl71wkb/ihPdZfuTAKxqhNeqUDp+tg==
+"@prismicio/helpers@^2.3.1":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.3.4.tgz#175374975387f216fd3bbbed6426bd795e57846a"
+  integrity sha512-Oh70o4sYNig9COMM1H5RgjAxOqLGUPrh8oIJnpmbLgxjK8A0NGnOt5RWu3bz1uxLNZ+NqZD8hBs/coDqXgIlaw==
   dependencies:
-    "@prismicio/helpers" "^2.0.0-beta.6"
-    "@prismicio/richtext" "^2.0.0-beta.4"
+    "@prismicio/richtext" "^2.1.1"
+    "@prismicio/types" "^0.2.3"
+    escape-html "^1.0.3"
+    imgix-url-builder "^0.0.3"
 
-"@prismicio/richtext@^2.0.0-beta.3", "@prismicio/richtext@^2.0.0-beta.4":
+"@prismicio/react@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@prismicio/react/-/react-2.5.0.tgz#2fa27467e153db8d761b72eeec648ac4e7ed910b"
+  integrity sha512-1EYdvoU2bpVEkmVDDVyTUK22C580tTWR96HJ9PMUex0oGeJLBAMKiRinyachN42r1uCH5nRAH54A90ZtBjjZhw==
+  dependencies:
+    "@prismicio/helpers" "^2.3.1"
+    "@prismicio/richtext" "^2.0.1"
+
+"@prismicio/richtext@^2.0.0-beta.3":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@prismicio/richtext/-/richtext-2.0.0.tgz#681e1ea847e1973086d45e285b12f649e1e2d5a3"
   integrity sha512-XH2DJZUz0LEHO45UmZsabUKuHB+kHGqORLp5fYJ+RlpmRBcKowjI9hcQZqS/rvWMTY/l948yJvy0/MlCIiLz6w==
   dependencies:
     "@prismicio/types" "^0.1.19"
 
+"@prismicio/richtext@^2.0.1", "@prismicio/richtext@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@prismicio/richtext/-/richtext-2.1.1.tgz#45b76b0bcfe40a5465c14d7d458e3354f6510068"
+  integrity sha512-/99JR2NUU2WV0025eAIqjd9OnF4ITaM57SVuhLc1XBUgnJe0HZrC9f24YKVW43jFR5HYTJtLgz01WjEddymqmA==
+  dependencies:
+    "@prismicio/types" "^0.2.0"
+
 "@prismicio/types@^0.1.13", "@prismicio/types@^0.1.19", "@prismicio/types@^0.1.20", "@prismicio/types@^0.1.21":
   version "0.1.21"
   resolved "https://registry.yarnpkg.com/@prismicio/types/-/types-0.1.21.tgz#2d5f8a3f85435859ff290be96235b450b164a4e7"
   integrity sha512-TMO4zpHlBFdvULDU5KQxeHOkI72lCkEKT3YwKhqiaiQWRVp7s3w27mXHjOWVBOlH/2qrzck219O84zBE6HzaMg==
+
+"@prismicio/types@^0.2.0", "@prismicio/types@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@prismicio/types/-/types-0.2.3.tgz#9f4c5bce441e1d59242f1795acb77f7a583cad99"
+  integrity sha512-mHsZ9ora8He6PAn+Q/0MCVdlfc0Xv8rSEYJyfwywDApuvssGvgUbeHE6XTqPhK2dJwb0mAkJzCpZiQJRt9+bvw==
 
 "@sideway/address@^4.1.3":
   version "4.1.3"
@@ -5587,6 +5609,11 @@ ignore@^5.1.1, ignore@^5.1.4, ignore@^5.1.8, ignore@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
   integrity sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==
+
+imgix-url-builder@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/imgix-url-builder/-/imgix-url-builder-0.0.3.tgz#9f386de64cdd1363d352a7f6313fd7dacd8fb282"
+  integrity sha512-8Oc2Cn4+jF06sEfJcVPlWYfD2F6RjrwIMbk1xEzux8unoB5LsvFc/GL1BQ47HPaeE12ReX2nMUcjUslGYWLxHA==
 
 imgix-url-params@^11.11.2:
   version "11.12.0"
