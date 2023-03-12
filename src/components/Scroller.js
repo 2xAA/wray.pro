@@ -4,6 +4,7 @@ const Scroller = ({
   message: partialMessage = "",
   textColor = () => "#000",
   backgroundColor = () => "transparent",
+  halfHeight = false,
 }) => {
   const canvasRef = React.createRef();
 
@@ -31,6 +32,9 @@ const Scroller = ({
 
       // deliberately half the height
       canvas.height = canvas.parentNode.clientWidth * 0.5625;
+      if (halfHeight) {
+        canvas.height = (canvas.parentNode.clientWidth * 0.5625) / 2;
+      }
       canvas.style.width = "100%";
 
       drawText();

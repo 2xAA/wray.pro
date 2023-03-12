@@ -1,28 +1,29 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import YouTube from "react-youtube";
 
 import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 import { RichText } from "../components/RichText";
 import { PostHeader } from "../components/PostHeader";
 
-const PageTemplate = ({ data }) => {
+export default ({ data }) => {
   if (!data) return null;
-  const doc = data.prismicWork.data;
+  const post = data.prismicBlogPost.data;
 
   return (
     <Layout>
-      <Seo title={doc.title.text} />
+      <Seo title={post.title.text} />
       <r-cell span="1..">
         <article>
           <r-grid columns="8">
             <r-cell span="8">
-              <RichText render={doc.title.richText} />
-              {doc.description.text}
+              <RichText render={post.title.richText} />
+              {post.description.text}
             </r-cell>
-            <PostHeader media={doc.media} title={doc.title} />
+            <PostHeader title={post.title} halfHeight={true} />
             <r-cell span="8">
-              <RichText render={doc.body.richText} />
+              <RichText render={post.body.richText} />
             </r-cell>{" "}
           </r-grid>
         </article>
@@ -32,39 +33,22 @@ const PageTemplate = ({ data }) => {
 };
 
 export const query = graphql`
-  query PageQuery($id: String) {
-    prismicWork(id: { eq: $id }) {
+  query BlogPostQuery($id: String) {
+    prismicBlogPost(id: { eq: $id }) {
       data {
         title {
           richText
           text
         }
 
-        description {
-          text
-        }
-
-        media {
-          image {
-            alt
-            url
-          }
-
-          is_playlist
-          youtube_id
-        }
-
-        thumbnail {
-          alt
-          url
-        }
-
         body {
           richText
+        }
+
+        description {
+          text
         }
       }
     }
   }
 `;
-
-export default PageTemplate;
