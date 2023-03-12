@@ -6,11 +6,11 @@ exports.linkResolver = (doc) => {
 
   // URL for a page type
   if (doc.type === "page") {
-    return `/${doc.uid}`;
+    return `/${doc.uid}/`;
   }
 
   if (doc.type === "blog_post") {
-    return `/blog/${doc.uid}`;
+    return `/blog/${doc.uid}/`;
   }
 
   if (doc.type === "blog_home") {
@@ -22,7 +22,7 @@ exports.linkResolver = (doc) => {
   }
 
   if (doc.type === "about") {
-    return `/about`;
+    return `/about/`;
   }
 
   // Backup for all other types
