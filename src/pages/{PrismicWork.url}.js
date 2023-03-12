@@ -4,8 +4,6 @@ import { graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 import { RichText } from "../components/RichText";
-import YouTube from "react-youtube";
-import Scroller from "../components/Scroller";
 import { PostHeader } from "../components/PostHeader";
 
 const PageTemplate = ({ data }) => {
