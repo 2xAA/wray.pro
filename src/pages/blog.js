@@ -6,7 +6,7 @@ import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 import { DateRenderer } from "../components/DateRenderer";
 
-export default ({ data }) => {
+const Blog = ({ data }) => {
   if (!data) return null;
 
   const {
@@ -42,6 +42,8 @@ export default ({ data }) => {
     </Layout>
   );
 };
+
+export default Blog;
 
 export const query = graphql`
   query AllBlogPosts {
