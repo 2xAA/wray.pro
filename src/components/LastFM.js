@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import anime from "animejs";
@@ -37,7 +37,7 @@ export default function LastFM() {
   const [timerId, setTimerId] = useState(null);
   const [animationInstance, setAnimationInstance] = useState(null);
 
-  useMemo(() => {
+  useEffect(() => {
     let lastArtist;
     let lastTrack;
     let lastNowPlaying;
@@ -128,6 +128,7 @@ export default function LastFM() {
       animationInstance.pause();
       clearTimeout(timerId);
     };
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
   }, []);
 
   return <ConnectedTrackDisplay />;

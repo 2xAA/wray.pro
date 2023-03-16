@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
  *
  * Copyright (c) 2008-2009, Felix Bruns <felixbruns@web.de>

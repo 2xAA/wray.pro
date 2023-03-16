@@ -2,7 +2,7 @@ import React from "react";
 import YouTube from "react-youtube";
 import Scroller from "../components/Scroller";
 
-const youtubePlayerOptions = {
+const getYoutubePlayerOptions = () => ({
   height: 360,
   width: 640,
   origin: typeof window !== "undefined" ? window.location.origin : null,
@@ -16,14 +16,14 @@ const youtubePlayerOptions = {
     playsinline: 1,
     loop: 1,
   },
-};
+});
 
 export const PostHeader = ({ media = [{}], title, halfHeight }) => (
   <r-cell span="8">
     {media.slice(0, 1).map(({ image, youtube_id, is_playlist }, index) => {
-      let playerOptions = { ...youtubePlayerOptions };
-
       if (youtube_id) {
+        const playerOptions = getYoutubePlayerOptions();
+
         if (is_playlist) {
           playerOptions.playerVars.list = youtube_id;
           playerOptions.playerVars.listType = "playlist";
