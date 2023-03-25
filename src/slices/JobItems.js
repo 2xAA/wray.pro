@@ -2,7 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { RichText } from "../components/RichText";
 import { padMonthFromDate } from "../utils/pad-month-from-date";
-import { PrismicLink } from "@prismicio/react";
+import { PrismicLink, PrismicImage } from "@prismicio/react";
 
 export const JobItems = ({ slice }) => {
   const renderRelatedWork = (job) => {
@@ -25,14 +25,18 @@ export const JobItems = ({ slice }) => {
                   document: {
                     data: {
                       title: { text: titleText },
-                      thumbnail: { alt: thumbnailAlt, url: thumbnailUrl },
+                      thumbnail,
                     },
                   },
                 },
               }) => (
                 <r-cell span="1" span-s="2" key={work.id}>
                   <PrismicLink document={work.document} title={titleText}>
-                    <img src={thumbnailUrl} alt={thumbnailAlt} width="100%" />
+                    <PrismicImage
+                      field={thumbnail}
+                      width="100%"
+                      loading="lazy"
+                    />
                   </PrismicLink>
                 </r-cell>
               )
@@ -156,6 +160,7 @@ export const query = graphql`
                         }
                         thumbnail {
                           url
+                          alt
                         }
                       }
                     }
