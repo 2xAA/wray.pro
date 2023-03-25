@@ -120,16 +120,15 @@ export default function LastFM() {
       );
     }
 
-    poll();
-    const id = setTimeout(poll, pollTime);
-    setTimerId(id);
+    if (timerId === null) {
+      poll();
+    }
 
     return () => {
-      animationInstance.pause();
       clearTimeout(timerId);
     };
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  }, []);
+  }, [timerId]);
 
   return <ConnectedTrackDisplay />;
 }
