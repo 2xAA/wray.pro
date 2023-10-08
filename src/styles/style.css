@@ -84,6 +84,7 @@ h2 {
 a {
   text-decoration: underline;
   text-decoration-color: rgba(var(--foreground-color-rgb), 0.3);
+  white-space: normal;
 }
 
 a.active {
