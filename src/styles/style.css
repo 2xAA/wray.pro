@@ -72,6 +72,10 @@ h2 {
   white-space: normal;
 }
 
+.video-container > div {
+  display: flex;
+}
+
 .video-container,
 .video-container iframe,
 .video-container object,
