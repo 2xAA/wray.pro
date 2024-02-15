@@ -16,7 +16,7 @@ const Homepage = ({ data }) => {
 
   return (
     <Layout isHomepage>
-      <Seo title="About" />
+      <Seo title="About" image={aboutData.profile_photo.url} />
       <r-cell span="3" span-s="8" class="about_header">
         <img
           src={aboutData.profile_photo.url}

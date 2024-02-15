@@ -12,7 +12,11 @@ const PageTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title={doc.title.text} />
+      <Seo
+        title={doc.title.text}
+        description={doc.description.text}
+        image={doc.thumbnail.url}
+      />
       <r-cell span="1..">
         <article>
           <r-grid columns="8">
