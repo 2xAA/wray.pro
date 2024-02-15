@@ -1,8 +1,13 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import { Location } from "@reach/router";
 
-export const Seo = ({ description, title }) => {
+export const Seo = ({
+  description,
+  title,
+  image = "https://wray.pro/icons/icon-512x512.png",
+}) => {
   const queryData = useStaticQuery(graphql`
     {
       site {
@@ -21,9 +26,28 @@ export const Seo = ({ description, title }) => {
     description || queryData.site?.siteMetadata?.description;
 
   return (
-    <Helmet>
-      <title>{metaTitle}</title>
-      <meta name="description" content={metaDescription} />
-    </Helmet>
+    <Location>
+      {({ location }) => (
+        <Helmet>
+          <title>{metaTitle}</title>
+          <meta name="description" content={metaDescription} />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@_2xAA" />
+          <meta name="twitter:title" content={metaTitle} />
+          <meta name="twitter:description" content={metaDescription} />
+          <meta name="twitter:image" content={image} />
+
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={metaTitle} />
+          <meta property="og:description" content={metaDescription} />
+          <meta
+            property="og:url"
+            content={`https://wray.pro${location.pathname}`}
+          />
+          <meta property="og:image" content={image} />
+        </Helmet>
+      )}
+    </Location>
   );
 };
