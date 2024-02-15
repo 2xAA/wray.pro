@@ -47,5 +47,13 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        policy: [{ userAgent: "GPTBot", disallow: ["/"] }],
+        sitemap: null,
+        host: null,
+      },
+    },
   ],
 };
