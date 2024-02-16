@@ -2,6 +2,34 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+// https://github.com/samber/the-great-gpt-firewall
+const robots = [
+  // OpenAI’s web crawler: GPT3.5, GPT4, ChatGPT
+  "GPTBot",
+
+  // ChatGPT plugins
+  "ChatGPT-User",
+
+  // Google's web crawler: Bard, VertexAI, Gemini
+  "Google-Extended",
+
+  // Claude
+  "anthropic-ai",
+
+  // Common Crawl
+  "CCBot",
+
+  // Omglibot: webz.io
+  "Omgilibot",
+  "Omgili",
+
+  // LLaMA2
+  "FacebookBot",
+
+  // ByteDance: Duobao
+  "Bytespider",
+];
+
 module.exports = {
   siteMetadata: {
     title: "wray.pro",
@@ -47,10 +75,13 @@ module.exports = {
         },
       },
     },
+
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        policy: [{ userAgent: "GPTBot", disallow: ["/"] }],
+        policy: [
+          ...robots.map((userAgent) => ({ userAgent, disallow: ["/"] })),
+        ],
         sitemap: null,
         host: null,
       },
