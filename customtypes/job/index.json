@@ -1,0 +1,93 @@
+{
+  "id": "job",
+  "json": {
+    "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+          "label": "Title"
+        }
+      },
+      "roles": {
+        "type": "Group",
+        "config": {
+          "fields": {
+            "role": {
+              "type": "StructuredText",
+              "config": {
+                "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+                "label": "Role"
+              }
+            },
+            "date": {
+              "type": "Date",
+              "config": {
+                "label": "Start Date"
+              }
+            },
+            "end_date": {
+              "type": "Date",
+              "config": {
+                "label": "End Date"
+              }
+            },
+            "present_job": {
+              "type": "Boolean",
+              "config": {
+                "placeholder_false": "no",
+                "placeholder_true": "yes",
+                "default_value": false,
+                "label": "Present Job"
+              }
+            },
+            "description": {
+              "type": "StructuredText",
+              "config": {
+                "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
+                "allowTargetBlank": true,
+                "label": "description"
+              }
+            }
+          },
+          "label": "Roles"
+        }
+      },
+      "related_work": {
+        "type": "Group",
+        "config": {
+          "fields": {
+            "work": {
+              "type": "Link",
+              "config": {
+                "select": "document",
+                "customtypes": ["work"],
+                "label": "Work"
+              }
+            }
+          },
+          "label": "Related Work"
+        }
+      },
+      "recommendations": {
+        "type": "Group",
+        "config": {
+          "fields": {
+            "recommendation_body": {
+              "type": "StructuredText",
+              "config": {
+                "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                "label": "Recommendation Body"
+              }
+            }
+          },
+          "label": "Recommendations"
+        }
+      }
+    }
+  },
+  "label": "Job",
+  "repeatable": true,
+  "status": true,
+  "format": "custom"
+}

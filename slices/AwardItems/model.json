@@ -1,0 +1,29 @@
+{
+  "id": "AwardItems",
+  "type": "SharedSlice",
+  "name": "AwardItems",
+  "legacyPaths": {
+    "about::body::award_items": "default"
+  },
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default",
+      "imageUrl": "",
+      "docURL": "",
+      "version": "initial",
+      "primary": {},
+      "items": {
+        "award": {
+          "type": "Link",
+          "config": {
+            "select": "document",
+            "customtypes": ["award"],
+            "label": "Award"
+          }
+        }
+      }
+    }
+  ]
+}

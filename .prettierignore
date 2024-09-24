@@ -1,4 +1,5 @@
-.cache
-package.json
-package-lock.json
+.nuxt
+.output
+customtypes
 public
+lib

@@ -1,0 +1,31 @@
+{
+  "id": "home",
+  "json": {
+    "Main": {
+      "work": {
+        "type": "Group",
+        "config": {
+          "fields": {
+            "work_item": {
+              "type": "Link",
+              "config": {
+                "select": "document",
+                "customtypes": ["work"],
+                "label": "Work Item"
+              }
+            }
+          },
+          "label": "Work"
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone"
+      }
+    }
+  },
+  "label": "Home",
+  "repeatable": false,
+  "status": true,
+  "format": "page"
+}

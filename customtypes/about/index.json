@@ -1,0 +1,61 @@
+{
+  "id": "about",
+  "label": "About Page",
+  "repeatable": false,
+  "status": true,
+  "format": "page",
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "slug"
+        }
+      },
+      "profile_photo": {
+        "type": "Image",
+        "config": {
+          "constraint": {},
+          "thumbnails": [],
+          "label": "Profile Photo"
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
+          "allowTargetBlank": true,
+          "label": "description"
+        }
+      },
+      "about": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
+          "allowTargetBlank": true,
+          "label": "About"
+        }
+      },
+      "body": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "text": {
+              "type": "SharedSlice"
+            },
+            "AwardItems": {
+              "type": "SharedSlice"
+            },
+            "TalkItems": {
+              "type": "SharedSlice"
+            },
+            "JobItems": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}
