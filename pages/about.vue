@@ -2,25 +2,86 @@
 import { components } from "~/slices";
 
 const prismic = usePrismic();
-const { data: page } = await useAsyncData("[about]", () =>
-  prismic.client.getSingle("about", {
-    fetchLinks: [
-      "job.title",
-      "job.role",
-      "job.date",
-      "job.roles",
-      "job.related_work",
-      "work.thumbnail",
-      "work.title",
-      "award.date",
-      "award.description",
-      "award.title",
-      "award.subtitle",
-      "talk.date",
-      "talk.description",
-      "talk.title",
-      "talk.subtitle",
-    ],
+const { data: page, error } = await useAsyncData("[about]", () =>
+  prismic.client.getSingle("about_new", {
+    graphQuery: `{
+      about_new {
+        uid
+        profile_photo
+        description
+        about
+
+        slices {
+          ...on JobItems {
+            variation {
+              ...on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
+                  job {
+                    ...jobFields
+                    related_work {
+                      work {
+                        title
+                        thumbnail
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          ...on AwardItems {
+            variation {
+              ...on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
+                  award {
+                    ...awardFields
+                  }
+                }
+              }
+            }
+          }
+
+          ...on TalkItems {
+            variation {
+              ...on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
+                  talk {
+                    ...talkFields
+                  }
+                }
+              }
+            }
+          }
+
+          ...on text {
+            variation {
+              ...on default {
+                primary {
+                  ...primaryFields
+                }
+
+                items {
+                  ...itemsFields
+                }
+              }
+            }
+          }
+        }
+      }
+    }`,
   }),
 );
 
@@ -41,12 +102,17 @@ useHead({
     <PrismicImage :field="page?.data.profile_photo" width="100%" />
   </r-cell>
   <r-cell span="5" span-s="8" class="about_header">
-    <PrismicRichText :field="page?.data.description" />
+    <PrismicRichText :field="page?.data.about" />
   </r-cell>
+
+  <!-- <r-cell span="8">
+    <pre>{{ error?.message }}</pre>
+    <pre>{{ JSON.stringify(page, null, 2) }}</pre>
+  </r-cell> -->
 
   <SliceZone
     :wrapper="undefined"
-    :slices="page?.data.body ?? []"
+    :slices="page?.data.slices ?? []"
     :components="components"
   />
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Content } from "@prismicio/client";
+import type { Content } from "@prismicio/client";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
@@ -12,30 +12,25 @@ const { slice } = defineProps(
   ]),
 );
 
-const slices = slice.items
-  .sort(
-    (
-      {
-        talk: {
-          data: { date: date_a },
-        },
+const slices = { ...slice }.items.sort(
+  (
+    {
+      talk: {
+        data: { date: date_a },
       },
-      {
-        talk: {
-          data: { date: date_b },
-        },
-      }
-    ) => {
-      return new Date(date_b) - new Date(date_a);
-    }
-  );
+    },
+    {
+      talk: {
+        data: { date: date_b },
+      },
+    },
+  ) => {
+    return new Date(date_b) - new Date(date_a);
+  },
+);
 </script>
 
 <template>
-  <!-- <r-cell span="8">
-    <pre>{{ JSON.stringify(slices, null, 2) }}</pre>
-  </r-cell> -->
-
   <!-- <section
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
@@ -46,13 +41,13 @@ const slices = slice.items
 
   <r-cell span="8">
     <r-grid columns="8">
-      <r-cell span="8" class="talk" v-for="{ talk } in slices" :key="talk.id">
+      <r-cell v-for="{ talk } in slices" :key="talk.id" span="8" class="talk">
         <r-grid columns="8">
-          <r-cell span="7" span-s="6">
-            <h2>{{talk.data.title[0].text}}</h2>
+          <r-cell span="6" span-s="4">
+            <h2>{{ talk.data.title[0].text }}</h2>
           </r-cell>
-          <r-cell span="1" span-s="2" class="award_date">
-            {{`${formatDate(talk.data.date)}`}}
+          <r-cell span="2" span-s="4" class="award_date">
+            {{ `${formatDate(talk.data.date)}` }}
           </r-cell>
           <r-cell span="8">
             <PrismicRichText :field="talk.data.description" />
