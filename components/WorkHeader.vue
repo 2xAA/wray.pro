@@ -1,3 +1,19 @@
+<template>
+  <r-cell span="8">
+    <div v-if="youtube_id" class="video-container">
+      <div ref="video"></div>
+    </div>
+    <PrismicImage v-else-if="image?.url" :field="image" />
+    <TextScroller
+      v-else
+      :message="message"
+      v-bind="{ matchSlotHeight, usePageWidth, faded }"
+    >
+      <slot />
+    </TextScroller>
+  </r-cell>
+</template>
+
 <script setup>
 import TextScroller from "./TextScroller.vue";
 
@@ -60,19 +76,3 @@ onLoaded(async ({ YT }) => {
   });
 });
 </script>
-
-<template>
-  <r-cell span="8">
-    <div v-if="youtube_id" class="video-container">
-      <div ref="video"></div>
-    </div>
-    <PrismicImage v-else-if="image?.url" :field="image" />
-    <TextScroller
-      v-else
-      :message="message"
-      v-bind="{ matchSlotHeight, usePageWidth, faded }"
-    >
-      <slot />
-    </TextScroller>
-  </r-cell>
-</template>
