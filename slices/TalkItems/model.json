@@ -1,0 +1,29 @@
+{
+  "id": "TalkItems",
+  "type": "SharedSlice",
+  "name": "TalkItems",
+  "legacyPaths": {
+    "about::body::talk_items": "default"
+  },
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default",
+      "imageUrl": "",
+      "docURL": "",
+      "version": "initial",
+      "primary": {},
+      "items": {
+        "talk": {
+          "type": "Link",
+          "config": {
+            "select": "document",
+            "customtypes": ["talk"],
+            "label": "Talk"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "JobItems",
+  "type": "SharedSlice",
+  "name": "JobItems",
+  "legacyPaths": {
+    "about::body::job_items": "default"
+  },
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default",
+      "imageUrl": "",
+      "docURL": "",
+      "version": "initial",
+      "primary": {},
+      "items": {
+        "job": {
+          "type": "Link",
+          "config": {
+            "select": "document",
+            "customtypes": ["job"],
+            "label": "Job"
+          }
+        }
+      }
+    }
+  ]
+}

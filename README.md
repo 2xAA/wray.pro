@@ -5,23 +5,38 @@ Portfolio site, CV and blog. Check it out: http://wray.pro/
 ## Built With
 
 - [Prismic](https://prismic.io/) - API-based content management system
-- [Gatsby](https://www.gatsbyjs.org/) - React based framework for building websites
+- [Nuxt 3](https://nuxt.com/) - Vue 3 based web framework
 
-## Developing
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-Work on feature branch, squash PR into next, rebase next into main.
-GitHub Actions will automatically build and deploy to GitHub pages.
+## Setup
 
-### Setup
-
-```bash
-yarn
-touch .env.development .env.production
-echo -e "GATSBY_PRISMIC_REPO_NAME=\nPRISMIC_CUSTOM_TYPES_API_TOKEN=" | tee -a .env.development .env.production > /dev/null
-```
-
-### Local development
+Make sure to install the dependencies:
 
 ```bash
-yarn develop
+yarn install
 ```
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+yarn dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+yarn build
+```
+
+Locally preview production build:
+
+```bash
+yarn preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
