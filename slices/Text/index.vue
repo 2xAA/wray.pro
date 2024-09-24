@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Content } from "@prismicio/client";
+import type { Content } from "@prismicio/client";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
@@ -14,5 +14,10 @@ defineProps(
 </script>
 
 <template>
-  <PrismicRichText :class="{'horizontal_list' : slice.variation === 'horizontalList'}" :field="slice.primary.richText" wrapper="r-cell" span="8"/>
+  <PrismicRichText
+    :class="{ horizontal_list: slice.variation === 'horizontalList' }"
+    :field="slice.primary.richText"
+    wrapper="r-cell"
+    span="8"
+  />
 </template>

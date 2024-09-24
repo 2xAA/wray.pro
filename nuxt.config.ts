@@ -44,7 +44,7 @@ export default defineNuxtConfig({
           path: "/work/:uid",
         },
         {
-          type: "about",
+          type: "about_new",
           path: "/about/",
         },
         {
