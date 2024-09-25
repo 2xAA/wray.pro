@@ -21,7 +21,7 @@ useHead({
 </script>
 
 <template>
-  <template v-for="item in page?.data.work" :key="item.work_item.id">
+  <template v-for="(item, index) in page?.data.work" :key="item.work_item.id">
     <r-cell span="8">
       <r-grid columns="8" class="portfolio_item">
         <r-cell span="2" span-s="3">
@@ -29,7 +29,7 @@ useHead({
             <PrismicImage
               :field="item.work_item.data.thumbnail"
               width="100%"
-              loading="lazy"
+              :loading="index < 3 ? '' : 'lazy'"
             />
           </PrismicLink>
         </r-cell>
