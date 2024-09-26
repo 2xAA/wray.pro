@@ -30,12 +30,8 @@ const lfmDisplayTrackInfo = ref("lfmDisplayTrackInfo");
 const marqueeAnimationInstance = ref(null);
 
 function setupMarqueeAnimation(w1, w2) {
-  console.log(w1, w2);
-
   if (w2 > w1) {
     const difference = w2 - w1;
-
-    console.log(`${-difference}px`);
 
     marqueeAnimationInstance.value = anime({
       targets: ".last-fm-display span",
