@@ -24,6 +24,31 @@ const lastArtist = ref("");
 const lastTrack = ref("");
 const timerId = ref(null);
 const animationInstance = ref(null);
+const resizeObserver = ref(null);
+const lfmDisplay = ref("lfmDisplay");
+const lfmDisplayTrackInfo = ref("lfmDisplayTrackInfo");
+const marqueeAnimationInstance = ref(null);
+
+function setupMarqueeAnimation(w1, w2) {
+  console.log(w1, w2);
+
+  if (w2 > w1) {
+    const difference = w2 - w1;
+
+    console.log(`${-difference}px`);
+
+    marqueeAnimationInstance.value = anime({
+      targets: ".last-fm-display span",
+      translateX: `${-difference}px`,
+      easing: "easeInOutSine",
+      direction: "alternate",
+      loop: true,
+      duration: 1000 + difference * 6,
+      delay: 800 + difference * 6,
+      endDelay: 600 + difference * 6,
+    });
+  }
+}
 
 function poll() {
   lastfm.user.getRecentTracks(
@@ -55,20 +80,24 @@ function poll() {
           complete: async () => {
             await wait(800);
 
-            const lfmDisplay = document.querySelector(".last-fm-display");
-            lfmDisplay.style.visibility = "hidden";
-            lfmDisplay.style.width = "auto";
+            lfmDisplay.value.style.visibility = "hidden";
+            lfmDisplay.value.style.width = "auto";
+
+            marqueeAnimationInstance.value?.pause();
+            lfmDisplayTrackInfo.value.style.transform = "";
 
             lastArtist.value = newArtist;
             lastTrack.value = newTrack;
             lastNowPlaying.value = nowPlaying;
 
-            nextTick(() => {
-              const { width } = lfmDisplay.getBoundingClientRect();
-              lfmDisplay.style.width = 0;
-              lfmDisplay.style.visibility = "visible";
+            nextTick(async () => {
+              const { width } = lfmDisplay.value.getBoundingClientRect();
+              const { width: marqueeWidth } =
+                lfmDisplayTrackInfo.value.getBoundingClientRect();
+              lfmDisplay.value.style.width = 0;
+              lfmDisplay.value.style.visibility = "visible";
 
-              anime({
+              animationInstance.value = anime({
                 targets: ".last-fm-display",
                 width,
                 easing: "easeInOutQuad",
@@ -77,6 +106,9 @@ function poll() {
                   timerId.value = id;
                 },
               });
+
+              await wait(800);
+              setupMarqueeAnimation(width, marqueeWidth);
             });
           },
         });
@@ -90,15 +122,52 @@ onMounted(() => {
     poll();
   }
 
-  return () => {
-    clearTimeout(timerId.value);
-  };
+  resizeObserver.value = new ResizeObserver(() => {
+    lfmDisplay.value.style.visibility = "hidden";
+    lfmDisplay.value.style.width = "auto";
+
+    marqueeAnimationInstance.value?.pause();
+    lfmDisplayTrackInfo.value.style.transform = "";
+
+    nextTick(() => {
+      if (!lastArtist.value && !lastTrack.value) {
+        return;
+      }
+
+      const { width } = lfmDisplay.value.getBoundingClientRect();
+      const { width: marqueeWidth } =
+        lfmDisplayTrackInfo.value.getBoundingClientRect();
+      lfmDisplay.value.style.width = 0;
+      lfmDisplay.value.style.visibility = "visible";
+      lfmDisplay.value.style.width = `${width}px`;
+
+      setupMarqueeAnimation(width, marqueeWidth);
+    });
+  });
+
+  resizeObserver.value.observe(lfmDisplay.value.parentNode);
+});
+
+onBeforeUnmount(() => {
+  clearTimeout(timerId.value);
+  resizeObserver.value.disconnect();
+  animationInstance.value?.pause();
+  marqueeAnimationInstance.value?.pause();
 });
 </script>
 
 <template>
-  <div className="last-fm-display" style="width: 0">
-    {{ lastNowPlaying ? "Now playing: " : "" }}
-    {{ lastTrack }} by {{ lastArtist }}
+  <div ref="lfmDisplay" className="last-fm-display" style="width: 0">
+    <span ref="lfmDisplayTrackInfo">
+      {{ lastNowPlaying ? "Now playing: " : "" }}
+      {{ lastTrack }} by
+      {{ lastArtist }}
+    </span>
   </div>
 </template>
+
+<style scroll>
+span {
+  display: inline-block;
+}
+</style>

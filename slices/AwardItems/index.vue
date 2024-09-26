@@ -50,10 +50,10 @@ const slices = { ...slice }.items.sort(
         class="award"
       >
         <r-grid columns="8">
-          <r-cell span="6" span-s="4">
+          <r-cell span="6" span-s="8">
             <h2>{{ award.data.title[0].text }}</h2>
           </r-cell>
-          <r-cell span="2" span-s="4" class="award_date">
+          <r-cell span="2" span-s="8" class="award_date">
             {{ `${formatDate(award.data.date)}` }}
           </r-cell>
           <r-cell span="8">

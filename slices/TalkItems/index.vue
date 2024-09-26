@@ -43,10 +43,10 @@ const slices = { ...slice }.items.sort(
     <r-grid columns="8">
       <r-cell v-for="{ talk } in slices" :key="talk.id" span="8" class="talk">
         <r-grid columns="8">
-          <r-cell span="6" span-s="4">
+          <r-cell span="6" span-s="8">
             <h2>{{ talk.data.title[0].text }}</h2>
           </r-cell>
-          <r-cell span="2" span-s="4" class="award_date">
+          <r-cell span="2" span-s="8" class="award_date">
             {{ `${formatDate(talk.data.date)}` }}
           </r-cell>
           <r-cell span="8">

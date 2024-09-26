@@ -10,7 +10,7 @@ import LastFM from "./LastFM.vue";
   <r-cell span="8">
     <footer>
       <r-grid columns="8">
-        <r-cell span="2">
+        <r-cell span="2" span-s="4" class="social_links">
           <a
             href="https://mastodon.social/@2xAA"
             rel="me noopener noreferrer nofollow"
@@ -39,7 +39,7 @@ import LastFM from "./LastFM.vue";
             <Instagram />
           </a>
         </r-cell>
-        <r-cell span="4" style="text-align: center">
+        <r-cell span="4" span-s="8" style="text-align: center">
           <aside class="lfm">
             <a
               href="https://last.fm/user/theonly2xAA"
@@ -56,8 +56,20 @@ import LastFM from "./LastFM.vue";
             </ClientOnly>
           </aside>
         </r-cell>
-        <r-cell span="2" style="text-align: right">/ Sam Wray</r-cell>
+        <r-cell span="2" span-s="4" style="text-align: right" class="signature"
+          >/ Sam Wray</r-cell
+        >
       </r-grid>
     </footer>
   </r-cell>
 </template>
+
+<style scoped>
+@media only screen and (max-width: 600px) {
+  .social_links,
+  .signature {
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+}
+</style>
