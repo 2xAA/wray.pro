@@ -149,16 +149,27 @@ nav a {
   fill: var(--foreground-color);
 }
 
+aside.lfm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+aside.lfm a.icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 aside.lfm div {
-  display: block;
-  margin: 5px auto 0 auto;
   overflow: hidden;
   text-align: center;
-  font-size: 12px;
+  font-size: calc(1em * 0.75);
   cursor: default;
 
   display: inline-block;
-  margin: -1px 0 0 0;
   text-align: left;
   white-space: nowrap;
 }
@@ -167,7 +178,6 @@ aside.lfm div {
   aside.lfm div {
     display: inline-block;
     text-align: center;
-    white-space: normal;
   }
 }
 
