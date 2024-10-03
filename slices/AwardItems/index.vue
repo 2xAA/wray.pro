@@ -31,16 +31,6 @@ const slices = { ...slice }.items.sort(
 </script>
 
 <template>
-  <!-- <r-cell span="8">
-    <pre>{{ JSON.stringify(slices, null, 2) }}</pre>
-  </r-cell> -->
-  <!-- <section
-    :data-slice-type="slice.slice_type"
-    :data-slice-variation="slice.variation"
-  >
-    Placeholder component for AwardItems (variation: {{ slice.variation }})
-    Slices
-  </section> -->
   <r-cell span="8">
     <r-grid columns="8">
       <r-cell
