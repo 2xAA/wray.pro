@@ -46,12 +46,6 @@ const formatTimeAtJob = (from, to, present) => {
 </script>
 
 <template>
-  <!-- <br
-    :data-slice-type="slice.slice_type"
-    :data-slice-variation="slice.variation"
-  /> -->
-  <!-- <pre>{{ JSON.stringify(slice, null, 2) }}</pre> -->
-
   <r-cell span="8">
     <r-grid columns="8">
       <r-cell v-for="{ job } in slices" :key="job.id" span="8" class="job">

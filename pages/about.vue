@@ -105,11 +105,6 @@ useHead({
     <PrismicRichText :field="page?.data.about" />
   </r-cell>
 
-  <!-- <r-cell span="8">
-    <pre>{{ error?.message }}</pre>
-    <pre>{{ JSON.stringify(page, null, 2) }}</pre>
-  </r-cell> -->
-
   <SliceZone
     :wrapper="undefined"
     :slices="page?.data.slices ?? []"
