@@ -3,6 +3,7 @@ import { apiEndpoint, repositoryName } from "./slicemachine.config.json";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
+  ssr: false,
   modules: [
     "@nuxtjs/prismic",
     "nuxt-svgo-loader",
