@@ -76,9 +76,6 @@ function poll() {
           complete: async () => {
             await wait(800);
 
-            lfmDisplay.value.style.visibility = "hidden";
-            lfmDisplay.value.style.width = "auto";
-
             marqueeAnimationInstance.value?.pause();
             lfmDisplayTrackInfo.value.style.transform = "";
 
@@ -87,6 +84,9 @@ function poll() {
             lastNowPlaying.value = nowPlaying;
 
             nextTick(async () => {
+              lfmDisplay.value.style.visibility = "hidden";
+              lfmDisplay.value.style.width = "auto";
+
               const { width } = lfmDisplay.value.getBoundingClientRect();
               const { width: marqueeWidth } =
                 lfmDisplayTrackInfo.value.getBoundingClientRect();
@@ -119,9 +119,6 @@ onMounted(() => {
   }
 
   resizeObserver.value = new ResizeObserver(() => {
-    lfmDisplay.value.style.visibility = "hidden";
-    lfmDisplay.value.style.width = "auto";
-
     marqueeAnimationInstance.value?.pause();
     lfmDisplayTrackInfo.value.style.transform = "";
 
@@ -129,6 +126,9 @@ onMounted(() => {
       if (!lastArtist.value && !lastTrack.value) {
         return;
       }
+
+      lfmDisplay.value.style.visibility = "hidden";
+      lfmDisplay.value.style.width = "auto";
 
       const { width } = lfmDisplay.value.getBoundingClientRect();
       const { width: marqueeWidth } =
