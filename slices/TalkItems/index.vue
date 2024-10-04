@@ -31,14 +31,6 @@ const slices = { ...slice }.items.sort(
 </script>
 
 <template>
-  <!-- <section
-    :data-slice-type="slice.slice_type"
-    :data-slice-variation="slice.variation"
-  >
-    Placeholder component for AwardItems (variation: {{ slice.variation }})
-    Slices
-  </section> -->
-
   <r-cell span="8">
     <r-grid columns="8">
       <r-cell v-for="{ talk } in slices" :key="talk.id" span="8" class="talk">
