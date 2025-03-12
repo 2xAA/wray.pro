@@ -57,3 +57,9 @@ useHead({
     </article>
   </r-cell>
 </template>
+
+<style>
+.inner_page a {
+  word-break: break-all;
+}
+</style>
