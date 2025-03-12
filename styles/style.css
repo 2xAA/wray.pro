@@ -21,7 +21,6 @@
 a {
   text-decoration: underline
     color(display-p3 var(--foreground-color-color) / 0.3);
-  word-break: break-all;
 }
 
 @media only screen and (max-width: 600px) {
