@@ -22,7 +22,7 @@
   --foreground-color-color: 0 0 0;
   --foreground-color-a: 1;
   --foreground-color: color(
-    display-p3 var(--foreground-color-color) / var(--foreground-color-a)
+    rec2020 var(--foreground-color-color) / var(--foreground-color-a)
   );
   --background-color: #fff;
 }
@@ -2374,7 +2374,7 @@ img.right.bottom {
   --red: #ee2711;
   --blue: #1871e9;
   --green: #12c05b;
-  --yellow: color(display-p3 0.94 0.76 0.27);
+  --yellow: color(rec2020 1 0.76 0.27);
 }
 .red {
   color: var(--red);
