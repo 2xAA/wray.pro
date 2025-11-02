@@ -25,6 +25,8 @@ export default (async () => {
   return defineNuxtConfig({
     compatibilityDate: "2024-04-03",
     devtools: { enabled: true },
+    // Remove inline JSON payloads
+    experimental: { renderJsonPayloads: true },
     ssr: true,
     modules: [
       "@nuxtjs/prismic",
