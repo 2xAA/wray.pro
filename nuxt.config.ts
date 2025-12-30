@@ -1,4 +1,5 @@
 import { createClient } from "@prismicio/client";
+import { fileURLToPath } from "node:url";
 import { repositoryName } from "./slicemachine.config.json";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 async function generatePrerenderRoutes() {
@@ -23,10 +24,10 @@ export default (async () => {
   const prerenderRoutes = await generatePrerenderRoutes();
 
   return defineNuxtConfig({
-    compatibilityDate: "2024-04-03",
+    compatibilityDate: "2025-12-30",
     devtools: { enabled: true },
     // Remove inline JSON payloads
-    experimental: { renderJsonPayloads: true },
+    experimental: { renderJsonPayloads: false },
     ssr: true,
     modules: [
       "@nuxtjs/prismic",
@@ -50,6 +51,21 @@ export default (async () => {
       compilerOptions: {
         isCustomElement: (tag) => {
           return ["r-grid", "r-cell"].indexOf(tag) > -1;
+        },
+      },
+    },
+
+    vite: {
+      resolve: {
+        alias: {
+          // Work around broken export in `unenv` so Vite can resolve this mock module.
+          // See: Nuxt build error "failed to resolve import 'unenv/runtime/mock/noop'".
+          "unenv/runtime/mock/noop": fileURLToPath(
+            new URL(
+              "./node_modules/unenv/dist/runtime/mock/noop.mjs",
+              import.meta.url,
+            ),
+          ),
         },
       },
     },

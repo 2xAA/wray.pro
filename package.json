@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build && node scripts/fix-prerender-html.mjs",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "animejs": "^3.2.2",
-    "nuxt": "^3.13.0",
+    "nuxt": "^4.2.2",
     "nuxt-svgo-loader": "^0.4.1",
     "vue": "latest",
     "vue-router": "latest"

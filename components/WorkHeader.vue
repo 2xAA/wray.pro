@@ -69,10 +69,16 @@ onLoaded(async ({ YT }) => {
     playerVars.list = youtube_id;
   }
 
-  // load the API
-  player.value = new YT.Player(video.value, {
-    videoId: youtube_id,
+  const config = {
     playerVars,
-  });
+    host: "https://www.youtube-nocookie.com",
+  };
+
+  if (!is_playlist) {
+    config.videoId = youtube_id;
+  }
+
+  // load the API
+  player.value = new YT.Player(video.value, config);
 });
 </script>
