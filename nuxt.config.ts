@@ -23,7 +23,7 @@ export default (async () => {
   const prerenderRoutes = await generatePrerenderRoutes();
 
   return defineNuxtConfig({
-    compatibilityDate: "2024-04-03",
+    compatibilityDate: "2025-12-30",
     devtools: { enabled: true },
     // Remove inline JSON payloads
     experimental: { renderJsonPayloads: true },
